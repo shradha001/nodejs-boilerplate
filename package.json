@@ -4,7 +4,7 @@
   "description": "Node.js project structure using Express and Mongoose",
   "main": "bin/www",
   "scripts": {
-    "test": "mocha test/index.js --timeout 10000",
+    "test": "mocha test/index.js --timeout 80000",
     "start": "node bin/www",
     "dev": "nodemon node bin/www",
     "coverage": "nyc npm test",
