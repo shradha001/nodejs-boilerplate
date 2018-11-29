@@ -5,7 +5,7 @@ This is a boilerplate to build REST APIs in Node using Express and Mongoose. Inc
 ## Getting Started
 ```sh
 #Clone the repo:
-git clone 
+git clone https://github.com/shradha001/node-rest-api.git
 cd  rest-api
 ```
 ### Prerequisites
