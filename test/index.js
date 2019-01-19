@@ -12,5 +12,4 @@ require("../components/user").testing(server);
 
 after(async () => {
   await mongoose.connection.db.dropDatabase();
-  await server.stop();
 });

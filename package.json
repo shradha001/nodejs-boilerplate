@@ -4,7 +4,7 @@
   "description": "Node.js project structure using Express and Mongoose",
   "main": "bin/www",
   "scripts": {
-    "test": "mocha test/index.js --timeout 80000",
+    "test": "mocha test/index.js --timeout 80000 --exit",
     "pretest": "./node_modules/.bin/eslint --ignore-path .gitignore .",
     "start": "node bin/www",
     "dev": "nodemon node bin/www",

@@ -9,4 +9,3 @@ const stop = () => {
   server.close();
 };
 module.exports = server;
-module.exports.stop = stop;
