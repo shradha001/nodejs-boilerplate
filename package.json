@@ -60,6 +60,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.2.0",
     "eslint": "^5.12.1",
+    "eslint-plugin-security": "^1.4.0",
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.7",
