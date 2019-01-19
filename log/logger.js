@@ -23,7 +23,15 @@ if (process.env.NODE_ENV === "test") {
 } else if (process.env.NODE_ENV !== "production") {
   logger.add(
     new winston.transports.Console({
-      format: winston.format.simple()
+      timestamp: function() {
+        return Date.now();
+      },
+      format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.printf(info => {
+          return `${info.timestamp} ${info.level}: ${info.message}`;
+        })
+      )
     })
   );
 }

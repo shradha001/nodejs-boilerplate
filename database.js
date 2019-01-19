@@ -1,5 +1,6 @@
 "use strict";
 const mongoose = require("mongoose");
+const logger = require("./log");
 const { dbConfig } = require("./config");
 
 const getConnection = () => {
@@ -9,13 +10,13 @@ const getConnection = () => {
   );
 
   mongoose.connection.on("connected", () => {
-    console.log(`Mongoose connected to ${dbConfig.database}`);
+    logger.info(`Mongoose connected to ${dbConfig.database}`);
   });
   mongoose.connection.on("error", err => {
-    console.log(`Mongoose connection error: ${err}`);
+    logger.error(`Mongoose connection error: ${err}`);
   });
   mongoose.connection.on("disconnected", () => {
-    console.log("Mongoose disconnected");
+    logger.info("Mongoose disconnected");
   });
 };
 
