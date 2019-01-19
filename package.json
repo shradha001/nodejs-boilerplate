@@ -13,7 +13,6 @@
     "report": "nyc report --reporter=html"
   },
   "pre-commit": [
-    "pretest",
     "test"
   ],
   "repository": {
