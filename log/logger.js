@@ -1,5 +1,5 @@
-const winston = require('winston');
-const { constants } = require('../config');
+const winston = require("winston");
+const { constants } = require("../config");
 
 const logger = winston.createLogger({
   level: constants.logger.level,
@@ -18,9 +18,9 @@ const logger = winston.createLogger({
 // If we're not in production then log to the `console` with the format:
 // `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
 //
-if (process.env.NODE_ENV === 'test') {
+if (process.env.NODE_ENV === "test") {
   logger.silent = true;
-} else if (process.env.NODE_ENV !== 'production') {
+} else if (process.env.NODE_ENV !== "production") {
   logger.add(
     new winston.transports.Console({
       format: winston.format.simple()
