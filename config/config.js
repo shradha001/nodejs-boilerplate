@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
 const serverConfig = {
   PORT: process.env.PORT || 9596
 };
 
 const dbConfig = {
-  database: process.env.DB_NAME || 'demo'
+  database: process.env.DB_NAME || "demo"
 };
 
 const respCodeAndMsg = {
@@ -18,14 +18,19 @@ const respCodeAndMsg = {
     UNAUTHORIZED: 401
   },
   ERR_MSG: {
-    BAD_REQUEST: 'Bad Request',
-    NOT_FOUND: 'Not Found'
+    BAD_REQUEST: "Bad Request",
+    NOT_FOUND: "Not Found"
   }
 };
 
 const constants = {
   logger: {
-    level: process.env.LOG_LEVEL || 'info'
+    level: process.env.LOG_LEVEL || "info"
+  },
+  apiLimiter: {
+    duration: 15 * 60 * 1000, // 15 minutes
+    max: 100,
+    message: "Too many requests, please try again after 15 minutes."
   }
 };
 
