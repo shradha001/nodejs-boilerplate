@@ -12,6 +12,10 @@
     "check-coverage": "nyc check-coverage --lines 95",
     "report": "nyc report --reporter=html"
   },
+  "pre-commit": [
+    "pretest",
+    "test"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shradha001/node-rest-api.git"
