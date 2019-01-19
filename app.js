@@ -5,10 +5,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const rateLimit = require("express-rate-limit");
 const helmet = require("helmet");
+const morgan = require("morgan");
 const cors = require("cors");
 const path = require("path");
 const routes = require("./routes");
-const { errorHandler } = require("./middleware");
+const { errorHandler, LoggerStream } = require("./middleware");
 const { constants } = require("./config");
 
 require("./database").getConnection();
@@ -23,6 +24,7 @@ const apiLimiter = rateLimit({
 
 app.use(apiLimiter);
 app.use(helmet());
+app.use(morgan("dev", { stream: new LoggerStream() }));
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

@@ -1,6 +1,7 @@
 "use strict";
 
 const { isCelebrate } = require("celebrate");
+const logger = require("../log");
 
 function errorHandler(err, req, res, next) {
   if (err) {
@@ -16,6 +17,13 @@ function errorHandler(err, req, res, next) {
   } else next();
 }
 
+class LoggerStream {
+  write(message) {
+    logger.info(message.substring(0, message.lastIndexOf("\n")));
+  }
+}
+
 module.exports = {
-  errorHandler
+  errorHandler,
+  LoggerStream
 };

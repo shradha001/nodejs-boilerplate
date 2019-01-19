@@ -50,6 +50,7 @@
     "joi": "^14.3.0",
     "lodash": "^4.17.11",
     "mongoose": "^5.3.14",
+    "morgan": "^1.9.1",
     "npm": "^6.4.1",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
