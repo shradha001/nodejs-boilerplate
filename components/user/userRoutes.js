@@ -8,7 +8,9 @@ const getUser = {
   path: "/users",
   validation: {
     query: Joi.object().keys({
-      _id: Joi.string().required()
+      _id: Joi.string()
+        .trim()
+        .required()
     })
   }
 };
@@ -17,7 +19,9 @@ const addUser = {
   path: "/users",
   validation: {
     body: Joi.object().keys({
-      name: Joi.string().required()
+      name: Joi.string()
+        .trim()
+        .required()
     })
   }
 };
@@ -26,8 +30,12 @@ const updateUser = {
   path: "/users",
   validation: {
     body: Joi.object().keys({
-      _id: Joi.string().required(),
-      name: Joi.string().required()
+      _id: Joi.string()
+        .trim()
+        .required(),
+      name: Joi.string()
+        .trim()
+        .required()
     })
   }
 };
@@ -36,7 +44,9 @@ const deleteUser = {
   path: "/users",
   validation: {
     query: Joi.object().keys({
-      _id: Joi.string().required()
+      _id: Joi.string()
+        .trim()
+        .required()
     })
   }
 };
