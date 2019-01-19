@@ -1,6 +1,5 @@
-'use strict';
-let User = require('./userModel');
-const logger = require('../../log');
+"use strict";
+let User = require("./userModel");
 
 const getUserById = async _id => {
   try {

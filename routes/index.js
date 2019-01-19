@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
 module.exports = app => {
-    require('../components/home').routes(app);
-    require('../components/user').routes(app);
-} 
+  require("../components/home").routes(app);
+  require("../components/user").routes(app);
+};

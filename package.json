@@ -5,6 +5,7 @@
   "main": "bin/www",
   "scripts": {
     "test": "mocha test/index.js --timeout 80000",
+    "pretest": "./node_modules/.bin/eslint --ignore-path .gitignore .",
     "start": "node bin/www",
     "dev": "nodemon node bin/www",
     "coverage": "nyc npm test",
@@ -54,6 +55,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.2.0",
+    "eslint": "^5.12.1",
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.7",
