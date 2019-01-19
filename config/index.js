@@ -1,3 +1,8 @@
 "use strict";
 
-module.exports = require("./config");
+module.exports = {
+  serverConfig: require("./serverConfig"),
+  respCodeAndMsg: require("./respCodeAndMsg"),
+  constants: require("./constants"),
+  dbConfig: require("./dbConfig")
+};
