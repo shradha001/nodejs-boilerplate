@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-let mongoose = require('mongoose');
+let mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
 let UserSchema = new Schema({
@@ -14,7 +14,7 @@ let UserSchema = new Schema({
   }
 });
 
-UserSchema.pre('save', next => {
+UserSchema.pre("save", next => {
   const now = new Date();
   if (!this.createdAt) {
     this.createdAt = now;
@@ -22,4 +22,4 @@ UserSchema.pre('save', next => {
   next();
 });
 
-module.exports = mongoose.model('user', UserSchema);
+module.exports = mongoose.model("user", UserSchema);

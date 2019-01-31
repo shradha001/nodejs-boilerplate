@@ -4,13 +4,17 @@
   "description": "Node.js project structure using Express and Mongoose",
   "main": "bin/www",
   "scripts": {
-    "test": "mocha test/index.js --timeout 80000",
+    "test": "mocha test/index.js --timeout 80000 --exit",
+    "pretest": "./node_modules/.bin/eslint --ignore-path .gitignore .",
     "start": "node bin/www",
     "dev": "nodemon node bin/www",
     "coverage": "nyc npm test",
     "check-coverage": "nyc check-coverage --lines 95",
     "report": "nyc report --reporter=html"
   },
+  "pre-commit": [
+    "test"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shradha001/node-rest-api.git"
@@ -40,10 +44,13 @@
     "cors": "^2.8.5",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
+    "express-rate-limit": "^3.3.2",
+    "helmet": "^3.15.0",
     "i": "^0.3.6",
     "joi": "^14.3.0",
     "lodash": "^4.17.11",
     "mongoose": "^5.3.14",
+    "morgan": "^1.9.1",
     "npm": "^6.4.1",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5",
@@ -53,9 +60,12 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.2.0",
+    "eslint": "^5.12.1",
+    "eslint-plugin-security": "^1.4.0",
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.7",
-    "nyc": "^13.1.0"
+    "nyc": "^13.1.0",
+    "pre-commit": "^1.2.2"
   }
 }

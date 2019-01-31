@@ -1,44 +1,52 @@
-'use strict';
+"use strict";
 
-const { celebrate, Joi, isCelebrate } = require('celebrate');
-const { respCodeAndMsg } = require('../../config');
-const { STATUS_CODE } = respCodeAndMsg;
-const { createErrorObject } = require('../../utilities');
-const userController = require('./userController');
+const { celebrate, Joi } = require("celebrate");
+const { createErrorObject } = require("../../utilities");
+const userController = require("./userController");
 
 const getUser = {
-  path: '/users',
+  path: "/users",
   validation: {
     query: Joi.object().keys({
-      _id: Joi.string().required()
+      _id: Joi.string()
+        .trim()
+        .required()
     })
   }
 };
 
 const addUser = {
-  path: '/users',
+  path: "/users",
   validation: {
     body: Joi.object().keys({
-      name: Joi.string().required()
+      name: Joi.string()
+        .trim()
+        .required()
     })
   }
 };
 
 const updateUser = {
-  path: '/users',
+  path: "/users",
   validation: {
     body: Joi.object().keys({
-      _id: Joi.string().required(),
-      name: Joi.string().required()
+      _id: Joi.string()
+        .trim()
+        .required(),
+      name: Joi.string()
+        .trim()
+        .required()
     })
   }
 };
 
 const deleteUser = {
-  path: '/users',
+  path: "/users",
   validation: {
     query: Joi.object().keys({
-      _id: Joi.string().required()
+      _id: Joi.string()
+        .trim()
+        .required()
     })
   }
 };
