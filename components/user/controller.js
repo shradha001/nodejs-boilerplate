@@ -1,5 +1,5 @@
 "use strict";
-const userService = require("./userService");
+const userService = require("./service");
 const {
   isEmptyObject,
   createSuccessObject,
