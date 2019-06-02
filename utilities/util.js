@@ -8,7 +8,7 @@ const { STATUS_CODE } = respCodeAndMsg;
 const createErrorObject = (httpStatusCode, message) => {
   return {
     details: {
-      message: message || "internal error",
+      message: message || respCodeAndMsg.ERROR_MESSAGES.SOMETHING_WRONG,
       data: {}
     },
     httpStatusCode: httpStatusCode || STATUS_CODE.BAD_REQUEST
@@ -18,7 +18,7 @@ const createErrorObject = (httpStatusCode, message) => {
 const createSuccessObject = (httpStatusCode, message, data) => {
   return {
     details: {
-      message: message || "success",
+      message: message || respCodeAndMsg.SUCCESS_MESSAGES.ACTION_COMPLETE,
       data: data || {}
     },
     httpStatusCode: httpStatusCode || STATUS_CODE.OK

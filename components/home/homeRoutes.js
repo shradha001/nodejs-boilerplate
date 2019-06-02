@@ -6,6 +6,8 @@ const { STATUS_CODE } = respCodeAndMsg;
 
 module.exports = app => {
   app.get("/", (req, res) => {
-    res.status(STATUS_CODE.OK).json({ message: "OK" });
+    res
+      .status(STATUS_CODE.OK)
+      .json({ message: respCodeAndMsg.SUCCESS_MESSAGES.ACTION_COMPLETE });
   });
 };

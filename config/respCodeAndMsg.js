@@ -9,8 +9,16 @@ module.exports = {
     NOT_FOUND: 404,
     UNAUTHORIZED: 401
   },
-  ERR_MSG: {
-    BAD_REQUEST: "Bad Request",
-    NOT_FOUND: "Not Found"
+  ERROR_MESSAGES: {
+    SOMETHING_WRONG: "Something went wrong.",
+    INVALID_REQUEST: "Invalid Request.",
+    DATA_NOT_FOUND: "Data not found.",
+    INVALID_DATA: "Invalid Data.",
+    WRONG_PARAMETER: "Wrong parameter.",
+    DUPLICATE_ENTRY: "Duplicate Entry.",
+    ACCESS_DENIED: "Access Denied."
+  },
+  SUCCESS_MESSAGES: {
+    ACTION_COMPLETE: "Action complete."
   }
 };
