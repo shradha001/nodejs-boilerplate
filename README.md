@@ -1,4 +1,4 @@
-# Node Js Project Structure
+# Node Js REST API using Express
 
 This project structure aims at structuring the code based on components. Each component has its own model, routes, controller, service and test.
 
@@ -12,7 +12,6 @@ This project structure aims at structuring the code based on components. Each co
 - Testing using Mocha
 - ESLint
 - Separate Express 'app' and 'server'
-  > **Resource:** [https://github.com/i0natan/nodebestpractices](https://github.com/i0natan/nodebestpractices)
 
 ## Prerequisites
 
