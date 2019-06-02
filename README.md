@@ -1,33 +1,40 @@
-# Boilerplate for Express & Mongoose REST APIs
+# Node Js Project Structure
 
-This is a boilerplate to build REST APIs in Node using Express and Mongoose. Includes unit test cases using Mocha, structured by components, logger and code coverage.
+This project structure aims at structuring the code based on components. Each component has its own model, routes, controller, service and test.
 
-## Getting Started
-```sh
-#Clone the repo:
-git clone https://github.com/shradha001/node-rest-api.git
-cd  rest-api
-```
-### Prerequisites
+# Followed best practices
+
+- Async/Await Support
+- Express Rate Limiter
+- Validating schema using Joi
+- Helmet to secure Express app
+- Logging using Winston and Morgan
+- Testing using Mocha
+- ESLint
+- Separate Express 'app' and 'server'
+  > **Resource:** [https://github.com/i0natan/nodebestpractices](https://github.com/i0natan/nodebestpractices)
+
+## Prerequisites
+
 Install Node, npm and MongoDB
 
-### Installing
+## Getting Started
+
 ```sh
-#Install dependencies:
-npm install
-
-#Start Server:
-npm start
-```
-## Running the tests
-```sh
-#Run test cases:
-npm test
-
-#coverage
-npm run coverage
-
-#report
-npm run report
+git clone https://github.com/shradha001/node-rest-api.git
+cd rest-api
 ```
 
+## Install Dependencies
+
+    npm install
+
+## Start Server
+
+    npm start
+
+# Run test cases
+
+    npm test
+
+If it works for you 😊 ✌️, show your support by ⭐
