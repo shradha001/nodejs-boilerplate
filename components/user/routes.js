@@ -2,7 +2,7 @@
 
 const { celebrate, Joi } = require("celebrate");
 const { createErrorObject } = require("../../utilities");
-const userController = require("./userController");
+const userController = require("./controller");
 
 const getUser = {
   path: "/users",

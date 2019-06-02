@@ -6,7 +6,7 @@ chai.should();
 chai.use(chaiHttp);
 module.exports = server => {
   describe("/Home", function() {
-    it("should give OK message on / GET", function(done) {
+    it("should give success message on / GET", function(done) {
       chai
         .request(server)
         .get("/")

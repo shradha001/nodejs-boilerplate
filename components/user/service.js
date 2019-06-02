@@ -1,5 +1,5 @@
 "use strict";
-let User = require("./userModel");
+let User = require("./model");
 
 const getUserById = async _id => {
   try {

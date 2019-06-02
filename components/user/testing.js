@@ -62,7 +62,7 @@ module.exports = server => {
         .end(function(err, res) {
           res.should.have.status(200);
           res.should.be.a("object");
-          res.body.should.have.property("message").eql("success");
+          res.body.should.have.property("message").eql("Action complete.");
           res.body.should.have.property("data");
           res.body.data.should.be.a("object");
           done();
@@ -75,7 +75,6 @@ module.exports = server => {
         .end(function(err, res) {
           res.should.have.status(404);
           res.should.be.a("object");
-          res.body.should.have.property("message").eql("Not Found");
           res.body.should.have.property("data");
           res.body.data.should.be.a("object");
           done();
@@ -88,7 +87,7 @@ module.exports = server => {
         .end(function(err, res) {
           res.should.have.status(200);
           res.should.be.a("object");
-          res.body.should.have.property("message").eql("success");
+          res.body.should.have.property("message").eql("Action complete.");
           res.body.should.have.property("data");
           res.body.data.should.be.a("object");
           done();
