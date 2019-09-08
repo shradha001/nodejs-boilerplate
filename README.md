@@ -5,13 +5,22 @@ This project structure aims at structuring the code based on components. Each co
 # Followed best practices
 
 - Async/Await Support
+
 - Express Rate Limiter
+
 - Validating schema using Joi
+
 - Helmet to secure Express app
+
 - Logging using Winston and Morgan
+
 - Testing using Mocha
+
 - ESLint
+
 - Separate Express 'app' and 'server'
+
+- Swagger documentation
 
 ## Prerequisites
 
@@ -20,8 +29,11 @@ Install Node, npm and MongoDB
 ## Getting Started
 
 ```sh
+
 git clone https://github.com/shradha001/node-rest-api.git
-cd rest-api
+
+cd node-rest-api
+
 ```
 
 ## Install Dependencies
@@ -35,5 +47,20 @@ cd rest-api
 # Run test cases
 
     npm test
+
+# Run eslint
+
+    npm run pretest
+
+# Run coverage
+
+    npm run coverage
+    npm run report
+
+# Swagger documentation
+
+Hit the below URL in your browser,
+
+    http://localhost:9596/documentation
 
 If it works for you 😊 ✌️, show your support by ⭐

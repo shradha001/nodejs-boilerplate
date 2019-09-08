@@ -1,0 +1,9 @@
+const app = require("../app");
+const logger = require("../libraries/logger");
+const { serverConfig } = require("../config");
+const port = serverConfig.PORT;
+const server = require("http").createServer(app);
+
+server.listen(port, logger.info(`Server up, listening on port ${port}`));
+
+module.exports = server;
