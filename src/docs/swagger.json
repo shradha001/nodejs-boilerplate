@@ -1,0 +1,150 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "REST API documentation <style>.models {display: none !important}</style>",
+    "version": "1.0.0",
+    "title": "Swagger REST API"
+  },
+  "tags": [
+    {
+      "name": "users",
+      "description": "Operations about user"
+    }
+  ],
+  "basePath": "/api/v1",
+  "schemes": ["https", "http"],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": ["users"],
+        "summary": "Get a user",
+        "description": "",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "description": "",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "action complete",
+            "schema": {
+              "$ref": "#/definitions/GetUserResponse"
+            }
+          },
+          "400": { "description": "something went wrong" },
+          "404": { "description": "data not found" }
+        }
+      },
+      "post": {
+        "tags": ["users"],
+        "summary": "Add a user",
+        "description": "",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "description": "user object",
+            "schema": { "$ref": "#/definitions/UserPayload" }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "action complete",
+            "schema": {
+              "$ref": "#/definitions/PostUserResponse"
+            }
+          },
+          "400": { "description": "something went wrong" }
+        }
+      },
+      "put": {
+        "tags": ["users"],
+        "summary": "Update an existing user",
+        "description": "",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "required": true,
+            "description": "",
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "description": "User object that needs to be updated",
+            "schema": { "$ref": "#/definitions/UserPayload" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "action complete"
+          },
+          "400": { "description": "something went wrong" },
+          "404": { "description": "data not found" }
+        }
+      },
+      "delete": {
+        "tags": ["users"],
+        "summary": "delete an existing user",
+        "description": "",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "action complete"
+          },
+          "400": { "description": "something went wrong" },
+          "404": { "description": "data not found" }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "GetUserResponse": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/User"
+      }
+    },
+    "PostUserResponse": {
+      "type": "object",
+      "properties": {
+        "_id": { "type": "string" }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "_id": { "type": "string" }
+      }
+    },
+    "UserPayload": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,20 +1,14 @@
 {
   "name": "rest-api",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Node.js project structure using Express and Mongoose",
-  "main": "bin/www",
   "scripts": {
-    "test": "mocha test/index.js --timeout 80000 --exit",
+    "start": "node src/bin/www",
     "pretest": "./node_modules/.bin/eslint --ignore-path .gitignore .",
-    "start": "node bin/www",
-    "dev": "nodemon node bin/www",
-    "coverage": "nyc npm test",
-    "check-coverage": "nyc check-coverage --lines 95",
-    "report": "nyc report --reporter=html"
+    "test": "mocha  src/test/index.js",
+    "coverage": "./node_modules/.bin/nyc npm run test",
+    "report": "./node_modules/.bin/nyc --reporter=html mocha src/test/index.js"
   },
-  "pre-commit": [
-    "test"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shradha001/node-rest-api.git"
@@ -31,41 +25,33 @@
     "api",
     "structure"
   ],
-  "author": "Shradha Mallik",
-  "license": "ISC",
+  "author": "shradha mallik",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/shradha001/node-rest-api/issues"
   },
   "homepage": "https://github.com/shradha001/node-rest-api#readme",
   "dependencies": {
-    "assert": "^1.4.1",
-    "body-parser": "^1.18.3",
-    "celebrate": "^9.0.1",
+    "celebrate": "^10.0.1",
     "cors": "^2.8.5",
-    "dotenv": "^6.1.0",
-    "express": "^4.16.4",
-    "express-rate-limit": "^3.3.2",
-    "helmet": "^3.15.0",
-    "i": "^0.3.6",
-    "joi": "^14.3.0",
-    "lodash": "^4.17.11",
-    "mongoose": "^5.3.14",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.0.0",
+    "helmet": "^3.21.0",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.6.13",
     "morgan": "^1.9.1",
-    "npm": "^6.4.1",
-    "request": "^2.88.0",
-    "request-promise-native": "^1.0.5",
-    "uuid": "^3.3.2",
-    "winston": "^3.1.0"
+    "swagger-ui-express": "^4.0.7",
+    "uuid": "^3.3.3",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "chai-http": "^4.2.0",
-    "eslint": "^5.12.1",
-    "eslint-plugin-security": "^1.4.0",
-    "istanbul": "^0.4.5",
-    "mocha": "^5.2.0",
-    "nodemon": "^1.18.7",
-    "nyc": "^13.1.0",
-    "pre-commit": "^1.2.2"
+    "chai-http": "^4.3.0",
+    "eslint": "^6.3.0",
+    "eslint-plugin-mocha": "^6.1.0",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
+    "supertest": "^4.0.2"
   }
 }
