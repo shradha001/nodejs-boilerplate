@@ -6,9 +6,7 @@ const mongoose = require("mongoose");
 const DATABASE_NAME = "demo-test";
 
 const importTests = (name, path) => {
-  describe(name, function() {
-    require(path);
-  });
+  require(path);
 };
 
 const runTests = () => {
@@ -17,18 +15,16 @@ const runTests = () => {
       .connect(`mongodb://localhost/${DATABASE_NAME}`, {
         useNewUrlParser: true,
         useFindAndModify: false,
-        useCreateIndex: true
+        useCreateIndex: true,
+        useUnifiedTopology: true
       })
       .then(() => {
         console.log(`MongoDB: Connected to ${DATABASE_NAME} database.`);
       });
   });
-
-  describe("API test cases", function(done) {
-    importTests("Users", "../components/users/test");
-    after(function(done) {
-      return mongoose.disconnect(done);
-    });
+  importTests("Users", "../components/users/test");
+  after(function() {
+    mongoose.connection.close();
   });
 };
 

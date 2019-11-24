@@ -1,4 +1,5 @@
 "use strict";
+const logger = require("../../libraries/logger");
 const userService = require("./service");
 const {
   createSuccessObject,
@@ -7,6 +8,7 @@ const {
   isEmptyObject
 } = require("../../utilities");
 const { respCodeAndMsg } = require("../../config");
+
 const { STATUS_CODE, ERROR_MESSAGES, SUCCESS_MESSAGES } = respCodeAndMsg;
 
 const filterUser = users => {
@@ -38,6 +40,7 @@ const getUser = async payload => {
       usersList
     );
   } catch (e) {
+    logger.error(`Controller: Error in fetching users: ${JSON.stringify(e)}`);
     throw e;
   }
 };
@@ -53,6 +56,7 @@ const addUser = async payload => {
       { _id }
     );
   } catch (e) {
+    logger.error(`Controller: Error in adding users: ${JSON.stringify(e)}`);
     throw e;
   }
 };
@@ -75,6 +79,7 @@ const updateUser = async payload => {
       {}
     );
   } catch (e) {
+    logger.error(`Controller: Error in updating users: ${JSON.stringify(e)}`);
     throw e;
   }
 };
@@ -96,6 +101,7 @@ const deleteUser = async payload => {
       {}
     );
   } catch (e) {
+    logger.error(`Controller: Error in deleting users: ${JSON.stringify(e)}`);
     throw e;
   }
 };

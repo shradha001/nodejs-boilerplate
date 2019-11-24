@@ -5,7 +5,8 @@ const { dbConfig } = require("../config");
 
 const getConnection = () => {
   mongoose.connect(`mongodb://localhost/${dbConfig.database}`, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
   });
 
   mongoose.connection.on("connected", () => {
