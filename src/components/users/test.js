@@ -16,7 +16,7 @@ describe("Users", function() {
       const users = [{ _id: "1", name: "test_one" }];
       await User.insertMany(users);
       const res = await request(app).get(`/api/v1/users?_id=1`);
-      expect(res.status).to.equal(400);
+      expect(res.status).to.equal(200);
       expect(res.body).to.have.property("data");
       expect(res.body).to.have.property("message");
       expect(res.body.data).to.be.an("array");
