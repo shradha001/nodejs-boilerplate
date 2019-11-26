@@ -9,10 +9,12 @@
     "report": "./node_modules/.bin/nyc --reporter=html mocha src/test/index.js",
     "prettier": "prettier --write --ignore-path .gitignore .",
     "lint:fix": "eslint --ignore-path .gitignore . --fix",
-    "lint": "eslint --ignore-path .gitignore ."
+    "lint": "eslint --ignore-path .gitignore .",
+    "commit": "git-cz"
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
   },
@@ -22,6 +24,11 @@
       "npm run lint",
       "git add"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/prompt"
+    }
   },
   "repository": {
     "type": "git",
@@ -60,8 +67,11 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "@commitlint/prompt": "^8.2.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.3.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-mocha": "^6.1.0",
