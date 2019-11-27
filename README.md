@@ -1,4 +1,5 @@
 # Node Js REST API using Express
+[![Build Status](https://travis-ci.org/shradha001/node-rest-api.svg?branch=master)](https://travis-ci.org/shradha001/node-rest-api)
 
 This project structure aims at structuring the code based on components. Each component has its own model, routes, controller, service and test.
 
