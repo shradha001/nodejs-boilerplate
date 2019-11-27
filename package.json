@@ -4,10 +4,31 @@
   "description": "Node.js project structure using Express and Mongoose",
   "scripts": {
     "start": "node src/bin/www",
-    "pretest": "./node_modules/.bin/eslint --ignore-path .gitignore .",
     "test": "mocha  src/test/index.js",
     "coverage": "./node_modules/.bin/nyc npm run test",
-    "report": "./node_modules/.bin/nyc --reporter=html mocha src/test/index.js"
+    "report": "./node_modules/.bin/nyc --reporter=html mocha src/test/index.js",
+    "prettier": "prettier --write --ignore-path .gitignore .",
+    "lint:fix": "eslint --ignore-path .gitignore . --fix",
+    "lint": "eslint --ignore-path .gitignore .",
+    "commit": "git-cz"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "npm run lint",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "repository": {
     "type": "git",
@@ -46,12 +67,20 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "@commitlint/prompt": "^8.2.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-mocha": "^6.1.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.4.3",
     "mocha": "^6.2.0",
     "nyc": "^14.1.1",
+    "prettier": "1.19.1",
     "supertest": "^4.0.2"
   }
 }

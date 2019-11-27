@@ -6,8 +6,14 @@
     "node": true,
     "mocha": true
   },
-  "plugins": ["mocha"],
-  "extends": ["eslint:recommended", "plugin:mocha/recommended"],
+  "plugins": [
+    "mocha"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:mocha/recommended",
+    "plugin:prettier/recommended"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
