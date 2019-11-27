@@ -15,19 +15,19 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
     }
   },
   "lint-staged": {
     "src/**/*.js": [
-      "npm run test",
       "npm run lint",
       "git add"
     ]
   },
   "config": {
     "commitizen": {
-      "path": "@commitlint/prompt"
+      "path": "cz-conventional-changelog"
     }
   },
   "repository": {
