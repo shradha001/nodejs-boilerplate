@@ -1,5 +1,6 @@
 # Node Js REST API using Express
 [![Build Status](https://travis-ci.org/shradha001/node-rest-api.svg?branch=master)](https://travis-ci.org/shradha001/node-rest-api)
+[![Coverage Status](https://coveralls.io/repos/github/shradha001/node-rest-api/badge.svg?branch=master)](https://coveralls.io/github/shradha001/node-rest-api?branch=master)
 
 This project structure aims at structuring the code based on components. Each component has its own model, routes, controller, service and test.
 
