@@ -33,11 +33,11 @@ Install Node, npm and MongoDB
 
 
 
-git clone https://github.com/shradha001/node-rest-api.git
+git clone https://github.com/shradha001/nodejs-boilerplate.git
 
 
 
-cd node-rest-api
+cd nodejs-boilerplate
 
 
 
