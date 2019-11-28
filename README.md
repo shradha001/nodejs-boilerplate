@@ -1,7 +1,7 @@
 # Node Js REST API using Express
 
-[![Build Status](https://travis-ci.org/shradha001/node-rest-api.svg?branch=master)](https://travis-ci.org/shradha001/node-rest-api)
-[![Coverage Status](https://coveralls.io/repos/github/shradha001/node-rest-api/badge.svg?branch=master)](https://coveralls.io/github/shradha001/node-rest-api?branch=master)
+[![Build Status](https://travis-ci.org/shradha001/nodejs-boilerplate.svg?branch=master)](https://travis-ci.org/shradha001/nodejs-boilerplate)
+[![Coverage Status](https://coveralls.io/repos/github/shradha001/nodejs-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/shradha001/nodejs-boilerplate?branch=master)
 
 ## Followed best practices
 
