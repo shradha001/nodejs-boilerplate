@@ -1,6 +1,9 @@
 "use strict";
-let User = require("./model");
-const logger = require("../../libraries/logger");
+
+const models = require("../models");
+const logger = require("../libraries/logger");
+
+const User = models.user;
 
 const getUsers = async query => {
   try {

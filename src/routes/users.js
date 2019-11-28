@@ -1,8 +1,10 @@
 "use strict";
 
 const { celebrate, Joi } = require("celebrate");
-const { createErrorObject } = require("../../utilities");
-const userController = require("./controller");
+const { createErrorObject } = require("../utilities");
+
+const controllers = require("../controllers");
+const userController = controllers.users;
 
 const getUser = {
   path: "/api/v1/users",
