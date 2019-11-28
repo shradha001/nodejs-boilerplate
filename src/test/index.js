@@ -22,7 +22,7 @@ const runTests = () => {
         console.log(`MongoDB: Connected to ${DATABASE_NAME} database.`);
       });
   });
-  importTests("Users", "../components/users/test");
+  importTests("Users", "./users");
   after(function() {
     mongoose.connection.close();
   });

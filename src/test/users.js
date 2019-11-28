@@ -1,10 +1,13 @@
 "use strict";
+
 const chai = require("chai");
 const request = require("supertest");
-const app = require("../../app");
-const expect = chai.expect;
 
-const User = require("./model");
+const models = require("../models");
+const app = require("../app");
+
+const expect = chai.expect;
+const User = models.user;
 
 describe("Users", function() {
   beforeEach(async function() {

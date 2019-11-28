@@ -1,14 +1,16 @@
 "use strict";
-const logger = require("../../libraries/logger");
-const userService = require("./service");
+
+const logger = require("../libraries/logger");
+const services = require("../services");
 const {
   createSuccessObject,
   createErrorObject,
   getUUID,
   isEmptyObject
-} = require("../../utilities");
-const { respCodeAndMsg } = require("../../config");
+} = require("../utilities");
+const { respCodeAndMsg } = require("../config");
 
+const userService = services.users;
 const { STATUS_CODE, ERROR_MESSAGES, SUCCESS_MESSAGES } = respCodeAndMsg;
 
 const filterUser = users => {
