@@ -1,5 +1,5 @@
 {
-  "name": "rest-api",
+  "name": "nodejs-boilerplate",
   "version": "1.0.0",
   "description": "Node.js project structure using Express and Mongoose",
   "scripts": {
@@ -33,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shradha001/node-rest-api.git"
+    "url": "git+https://github.com/shradha001/nodejs-boilerplate.git"
   },
   "keywords": [
     "mongodb",
@@ -50,9 +50,9 @@
   "author": "shradha mallik",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shradha001/node-rest-api/issues"
+    "url": "https://github.com/shradha001/nodejs-boilerplate/issues"
   },
-  "homepage": "https://github.com/shradha001/node-rest-api#readme",
+  "homepage": "https://github.com/shradha001/nodejs-boilerplate#readme",
   "dependencies": {
     "celebrate": "^10.0.1",
     "cors": "^2.8.5",
