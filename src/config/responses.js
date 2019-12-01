@@ -7,7 +7,8 @@ module.exports = {
     INTERNAL_SERVER_ERROR: 500,
     BAD_REQUEST: 400,
     NOT_FOUND: 404,
-    UNAUTHORIZED: 401
+    UNAUTHORIZED: 401,
+    DUPLICATE_ENTRY: 409
   },
   ERROR_MESSAGES: {
     SOMETHING_WRONG: "Something went wrong.",
@@ -16,7 +17,9 @@ module.exports = {
     INVALID_DATA: "Invalid Data.",
     WRONG_PARAMETER: "Wrong parameter.",
     DUPLICATE_ENTRY: "Duplicate Entry.",
-    ACCESS_DENIED: "Access Denied."
+    ACCESS_DENIED: "Access Denied.",
+    PASSWORD_INVALID:
+      "Password should be atlease {MIN} characters long, must have a digit, uppercase and lower alphabet"
   },
   SUCCESS_MESSAGES: {
     ACTION_COMPLETE: "Action complete."

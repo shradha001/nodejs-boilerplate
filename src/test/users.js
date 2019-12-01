@@ -5,6 +5,7 @@ const request = require("supertest");
 
 const models = require("../models");
 const app = require("../app");
+const common = require("./common");
 
 const expect = chai.expect;
 const User = models.user;
@@ -14,70 +15,54 @@ describe("Users", function() {
     await User.deleteMany();
   });
 
-  describe("GET /users", function() {
-    it("should give user details by _id ", async function() {
-      const users = [{ _id: "1", name: "test_one" }];
-      await User.insertMany(users);
-      const res = await request(app).get(`/api/v1/users?_id=1`);
-      expect(res.status).to.equal(200);
-      expect(res.body).to.have.property("data");
-      expect(res.body).to.have.property("message");
-      expect(res.body.data).to.be.an("array");
-      expect(res.body.data[0])
-        .to.have.property("name")
-        .eql("test_one");
-    });
-
-    it("should give empty user details for invalid id", async function() {
-      const res = await request(app).get(`/api/v1/users?_id=10`);
-      expect(res.status).to.equal(404);
-      expect(res.body).to.have.property("data");
-      expect(res.body).to.have.property("message");
-    });
-  });
   describe("POST /users", function() {
-    it("should add new user", async function() {
-      const userDetails = { name: "admin" };
+    it("should register user", async function() {
+      const userDetails = common.validUser1;
       const res = await request(app)
-        .post("/api/v1/users")
+        .post("/api/v1/users/register")
         .send(userDetails);
 
       expect(res.status).to.equal(201);
       expect(res.body).to.have.property("data");
       expect(res.body).to.have.property("message");
-      expect(res.body.data).to.have.property("_id");
+      expect(res.body.data).to.have.property("token");
+      expect(res.body.data).to.have.property("expiry");
     });
 
-    it("should throw error for missing _id", async function() {
-      const res = await request(app).put("/api/v1/users");
-      expect(res.status).to.equal(400);
-    });
-  });
-  describe("UPDATE /users", function() {
-    it("should update user", async function() {
-      const users = [{ _id: "2", name: "test_two" }];
-      await User.insertMany(users);
-      let newUserDetails = { name: "test_three" };
-      let userId = "2";
+    it("should not register user(duplicate user)", async function() {
+      const userDetails = common.validUser2;
+      await request(app)
+        .post("/api/v1/users/register")
+        .send(userDetails);
       const res = await request(app)
-        .put(`/api/v1/users?_id=${userId}`)
-        .send(newUserDetails);
-      expect(res.status).to.equal(200);
+        .post("/api/v1/users/register")
+        .send(userDetails);
+
+      expect(res.status).to.equal(409);
       expect(res.body).to.have.property("data");
       expect(res.body).to.have.property("message");
     });
 
-    it("should throw error for missing _id", async function() {
-      const res = await request(app).delete("/api/v1/users");
+    it("should not register user(invalid email)", async function() {
+      const userDetails = common.invalidEmail;
+      const res = await request(app)
+        .post("/api/v1/users/register")
+        .send(userDetails);
+
       expect(res.status).to.equal(400);
+      expect(res.body).to.have.property("data");
+      expect(res.body).to.have.property("message");
     });
-  });
-  describe("DELETE /users", function() {
-    it("should delete user by id", async function() {
-      const users = [{ _id: "3", name: "test_three" }];
-      await User.insertMany(users);
-      const res = await request(app).delete("/api/v1/users?_id=3");
-      expect(res.status).to.equal(200);
+
+    it("should not register user(invalid password)", async function() {
+      const userDetails = common.invalidPassword;
+      const res = await request(app)
+        .post("/api/v1/users/register")
+        .send(userDetails);
+
+      expect(res.status).to.equal(400);
+      expect(res.body).to.have.property("data");
+      expect(res.body).to.have.property("message");
     });
   });
 });

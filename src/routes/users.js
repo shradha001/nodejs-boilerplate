@@ -1,54 +1,23 @@
 "use strict";
 
 const { celebrate, Joi } = require("celebrate");
-const { createErrorObject } = require("../utilities");
 
+const utilities = require("../utilities");
 const controllers = require("../controllers");
+const logger = require("../libraries/logger");
+
+const { createErrorObject } = utilities.utils;
 const userController = controllers.users;
 
-const getUser = {
-  path: "/api/v1/users",
-  validation: {
-    query: Joi.object().keys({
-      _id: Joi.string()
-        .trim()
-        .optional()
-    })
-  }
-};
-
-const addUser = {
-  path: "/api/v1/users",
+const register = {
+  path: "/api/v1/users/register",
   validation: {
     body: Joi.object().keys({
-      name: Joi.string()
+      email: Joi.string()
+        .email()
         .trim()
-        .required()
-    })
-  }
-};
-
-const updateUser = {
-  path: "/api/v1/users",
-  validation: {
-    query: Joi.object().keys({
-      _id: Joi.string()
-        .trim()
-        .required()
-    }),
-    body: Joi.object().keys({
-      name: Joi.string()
-        .trim()
-        .required()
-    })
-  }
-};
-
-const deleteUser = {
-  path: "/api/v1/users",
-  validation: {
-    query: Joi.object().keys({
-      _id: Joi.string()
+        .required(),
+      password: Joi.string()
         .trim()
         .required()
     })
@@ -56,65 +25,16 @@ const deleteUser = {
 };
 
 module.exports = app => {
-  app.get(getUser.path, celebrate(getUser.validation), async (req, res) => {
-    try {
-      const payload = req.query;
-      const successResponse = await userController.getUser(payload);
-      res.status(successResponse.httpStatusCode).json(successResponse.details);
-    } catch (e) {
-      let error = e;
-      if (!e.details) error = createErrorObject();
-      res.status(error.httpStatusCode).json(error.details);
-    }
-  });
-
-  app.post(addUser.path, celebrate(addUser.validation), async (req, res) => {
+  app.post(register.path, celebrate(register.validation), async (req, res) => {
     try {
       const payload = req.body;
-      const successResponse = await userController.addUser(payload);
+      const successResponse = await userController.registerUser(payload);
       res.status(successResponse.httpStatusCode).json(successResponse.details);
     } catch (e) {
+      logger.error(`Error in registration of user: ${e}`);
       let error = e;
       if (!e.details) error = createErrorObject();
       res.status(error.httpStatusCode).json(error.details);
     }
   });
-
-  app.put(
-    updateUser.path,
-    celebrate(updateUser.validation),
-    async (req, res) => {
-      try {
-        let payload = req.body;
-        const queryParams = req.query;
-        payload = { ...payload, ...queryParams };
-        const successResponse = await userController.updateUser(payload);
-        res
-          .status(successResponse.httpStatusCode)
-          .json(successResponse.details);
-      } catch (e) {
-        let error = e;
-        if (!e.details) error = createErrorObject();
-        res.status(error.httpStatusCode).json(error.details);
-      }
-    }
-  );
-
-  app.delete(
-    deleteUser.path,
-    celebrate(deleteUser.validation),
-    async (req, res) => {
-      try {
-        const payload = req.query;
-        const successResponse = await userController.deleteUser(payload);
-        res
-          .status(successResponse.httpStatusCode)
-          .json(successResponse.details);
-      } catch (e) {
-        let error = e;
-        if (!e.details) error = createErrorObject();
-        res.status(error.httpStatusCode).json(error.details);
-      }
-    }
-  );
 };

@@ -2,7 +2,9 @@
 
 const _ = require("lodash");
 const uuidv4 = require("uuid/v4");
-const { respCodeAndMsg } = require("../config");
+const passwordValidator = require("password-validator");
+
+const { respCodeAndMsg, constants } = require("../config");
 const { STATUS_CODE } = respCodeAndMsg;
 
 const createErrorObject = (httpStatusCode, message, data) => {
@@ -33,9 +35,30 @@ const isEmptyObject = obj => {
   return _.isEmpty(obj);
 };
 
+const validatePassword = password => {
+  const passwordSchema = new passwordValidator();
+  const { PASSWORD_CONSTRAINTS } = constants;
+  passwordSchema
+    .is()
+    .min(PASSWORD_CONSTRAINTS.min) // Minimum length
+    .is()
+    .max(PASSWORD_CONSTRAINTS.max) // Maximum length
+    .has()
+    .uppercase() // Must have uppercase letters
+    .has()
+    .lowercase() // Must have lowercase letters
+    .has()
+    .digits() // Must have digits
+    .has()
+    .not()
+    .spaces();
+  return passwordSchema.validate(password);
+};
+
 module.exports = {
   createErrorObject,
   isEmptyObject,
   createSuccessObject,
-  getUUID
+  getUUID,
+  validatePassword
 };

@@ -5,19 +5,7 @@ const logger = require("../libraries/logger");
 
 const User = models.user;
 
-const getUsers = async query => {
-  try {
-    let searchQuery = query ? query : {};
-    const user = await User.find(searchQuery).exec();
-    if (user && Array.isArray(user)) return user;
-    else return [];
-  } catch (e) {
-    logger.error(`Service: Error in fetching users: ${JSON.stringify(e)}`);
-    throw e;
-  }
-};
-
-const addUser = async payload => {
+const saveUser = async payload => {
   try {
     const user = new User();
     Object.assign(user, payload);
@@ -28,27 +16,16 @@ const addUser = async payload => {
   }
 };
 
-const updateUser = async payload => {
+const getUserByEmail = async email => {
   try {
-    await User.updateOne({ _id: payload._id }, { name: payload.name });
+    return await User.findOne({ email });
   } catch (e) {
-    logger.error(`Service: Error in updating users: ${JSON.stringify(e)}`);
-    throw e;
-  }
-};
-
-const deleteUser = async _id => {
-  try {
-    await User.deleteOne({ _id });
-  } catch (e) {
-    logger.error(`Service: Error in deleting users: ${JSON.stringify(e)}`);
+    logger.error(`Error in fetching user: ${JSON.stringify(e)}`);
     throw e;
   }
 };
 
 module.exports = {
-  getUsers,
-  addUser,
-  updateUser,
-  deleteUser
+  saveUser,
+  getUserByEmail
 };

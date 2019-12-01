@@ -1,3 +1,7 @@
 "use strict";
 
-module.exports = require("./util");
+module.exports = {
+  utils: require("./util"),
+  hashUtil: require("./hash"),
+  jwtUtil: require("./jwt")
+};
