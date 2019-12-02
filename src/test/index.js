@@ -1,6 +1,8 @@
 "use strict";
 
 process.env.NODE_ENV = "test";
+process.env.JWT_SECRET = "thisisasecret";
+require("dotenv").config();
 
 const mongoose = require("mongoose");
 

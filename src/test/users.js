@@ -11,11 +11,10 @@ const expect = chai.expect;
 const User = models.user;
 
 describe("Users", function() {
-  beforeEach(async function() {
-    await User.deleteMany();
-  });
-
   describe("POST /users", function() {
+    beforeEach(async function() {
+      await User.deleteMany();
+    });
     it("should register user", async function() {
       const userDetails = common.validUser1;
       const res = await request(app)
