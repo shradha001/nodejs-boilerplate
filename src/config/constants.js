@@ -9,5 +9,18 @@ module.exports = {
     max: 100,
     message: "Too many requests, please try again after 15 minutes."
   },
-  morganFormat: process.env.NODE_ENV === "development" ? "combined" : "dev"
+  morganFormat: process.env.NODE_ENV === "development" ? "combined" : "dev",
+  HASH_SALT_ROUNDS: process.env.HASH_SALT_ROUNDS
+    ? process.env.HASH_SALT_ROUNDS
+    : 10,
+  JWT: {
+    secret: process.env.JWT_SECRET,
+    expiryInMins: process.env.JWT_EXPIRY_IN_MINS
+      ? process.env.JWT_EXPIRY_IN_MINS
+      : 60
+  },
+  PASSWORD_CONSTRAINTS: {
+    min: 6,
+    max: 12
+  }
 };
