@@ -67,6 +67,23 @@ const registerUser = async payload => {
   }
 };
 
+const loginUser = async payload => {
+  try {
+    const jwtPayload = { email: payload.email };
+    const jwtToken = await generateJWT(jwtPayload);
+
+    return createSuccessObject(
+      STATUS_CODE.CREATED,
+      SUCCESS_MESSAGES.ACTION_COMPLETE,
+      { token: jwtToken, expiry: constants.JWT.expiryInMins * 60 }
+    );
+  } catch (e) {
+    logger.error(`Controller: Error in login users: ${JSON.stringify(e)}`);
+    throw e;
+  }
+};
+
 module.exports = {
-  registerUser
+  registerUser,
+  loginUser
 };
