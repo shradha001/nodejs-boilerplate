@@ -73,7 +73,7 @@ const loginUser = async payload => {
     const jwtToken = await generateJWT(jwtPayload);
 
     return createSuccessObject(
-      STATUS_CODE.CREATED,
+      STATUS_CODE.OK,
       SUCCESS_MESSAGES.ACTION_COMPLETE,
       { token: jwtToken, expiry: constants.JWT.expiryInMins * 60 }
     );

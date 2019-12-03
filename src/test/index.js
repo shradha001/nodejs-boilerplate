@@ -2,6 +2,8 @@
 
 process.env.NODE_ENV = "test";
 process.env.JWT_SECRET = "thisisasecret";
+process.env.SESSION_SECRET = "thisissessionsecret";
+
 require("dotenv").config();
 
 const mongoose = require("mongoose");
