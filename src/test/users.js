@@ -115,5 +115,20 @@ describe("Users", function() {
 
       expect(res.status).to.equal(401);
     });
+
+    it("should fail to login user (missing  password)", async function() {
+      const userDetails = common.validUser1;
+      await request(app)
+        .post("/api/v1/users/register")
+        .send(userDetails);
+
+      userDetails.password = null;
+
+      const res = await request(app)
+        .post("/api/v1/users/login")
+        .send(userDetails);
+
+      expect(res.status).to.equal(400);
+    });
   });
 });
