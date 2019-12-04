@@ -13,17 +13,6 @@ const loginConfig = passport => {
     done(null, user.email);
   });
 
-  passport.deserializeUser(function(email, done) {
-    userService
-      .getUserByEmail(email)
-      .then(user => {
-        done(null, user);
-      })
-      .catch(e => {
-        done(e);
-      });
-  });
-
   const localStrategy = new LocalStrategy(
     {
       usernameField: "email",
