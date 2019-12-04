@@ -14,6 +14,15 @@ const hashData = async data => {
   }
 };
 
+const compareHash = async (data, hash) => {
+  try {
+    return await bcrypt.compare(data, hash);
+  } catch (e) {
+    logger.error(`Error in comparing hash ${JSON.stringify(e)}`);
+  }
+};
+
 module.exports = {
-  hashData
+  hashData,
+  compareHash
 };

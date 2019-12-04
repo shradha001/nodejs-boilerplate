@@ -22,5 +22,6 @@ module.exports = {
   PASSWORD_CONSTRAINTS: {
     min: 6,
     max: 12
-  }
+  },
+  SESSION_SECRET: process.env.SESSION_SECRET
 };
