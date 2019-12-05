@@ -14,9 +14,9 @@ const generateJWT = async payload => {
     const options = {
       expiresIn: JWT.expiryInMins * 60
     };
-    return jwt.signAsync(payload, JWT.secret, options);
+    return await jwt.signAsync(payload, JWT.secret, options);
   } catch (e) {
-    logger.error(`Error in creatig jwt token ${JSON.stringify(e)}`);
+    logger.error(`Error in creating jwt token ${JSON.stringify(e)}`);
     throw e;
   }
 };
