@@ -16,6 +16,16 @@ const saveProduct = async payload => {
   }
 };
 
+const getProductById = async _id => {
+  try {
+    return await Product.findOne({ _id });
+  } catch (e) {
+    logger.error(`Error in fetching product by id: ${JSON.stringify(e)}`);
+    throw e;
+  }
+};
+
 module.exports = {
-  saveProduct
+  saveProduct,
+  getProductById
 };

@@ -27,6 +27,17 @@ const addProduct = {
   }
 };
 
+const getProduct = {
+  path: "/api/v1/products",
+  validation: {
+    query: Joi.object().keys({
+      _id: Joi.string()
+        .trim()
+        .optional()
+    })
+  }
+};
+
 module.exports = app => {
   app.post(
     addProduct.path,
@@ -44,6 +55,30 @@ module.exports = app => {
           .status(successResponse.httpStatusCode)
           .json(successResponse.details);
       } catch (e) {
+        let error = e;
+        if (!e.details) error = createErrorObject();
+        res.status(error.httpStatusCode).json(error.details);
+      }
+    }
+  );
+
+  app.get(
+    getProduct.path,
+    celebrate(getProduct.validation),
+    passport.authenticate("jwt", { session: false }),
+    async (req, res) => {
+      try {
+        const user = req.user;
+        const payload = req.query;
+        const successResponse = await productController.getProduct(
+          payload,
+          user
+        );
+        res
+          .status(successResponse.httpStatusCode)
+          .json(successResponse.details);
+      } catch (e) {
+        console.log(e);
         let error = e;
         if (!e.details) error = createErrorObject();
         res.status(error.httpStatusCode).json(error.details);

@@ -19,7 +19,8 @@ module.exports = {
     DUPLICATE_ENTRY: "Duplicate Entry.",
     ACCESS_DENIED: "Access Denied.",
     PASSWORD_INVALID:
-      "Password should be atlease {MIN} characters long, must have a digit, uppercase and lower alphabet"
+      "Password should be atlease {MIN} characters long, must have a digit, uppercase and lower alphabet",
+    NOT_RIGHT_ROLE: "User doesn't have the right role"
   },
   SUCCESS_MESSAGES: {
     ACTION_COMPLETE: "Action complete."

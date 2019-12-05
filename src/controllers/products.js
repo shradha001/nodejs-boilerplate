@@ -6,8 +6,8 @@ const config = require("../config");
 const logger = require("../libraries/logger");
 
 const { respCodeAndMsg } = config;
-const { STATUS_CODE, SUCCESS_MESSAGES } = respCodeAndMsg;
-const { createSuccessObject, getUUID } = utilities.utils;
+const { STATUS_CODE, SUCCESS_MESSAGES, ERROR_MESSAGES } = respCodeAndMsg;
+const { createSuccessObject, getUUID, createErrorObject } = utilities.utils;
 const productServices = services.products;
 
 const addProduct = async (payload, user) => {
@@ -28,6 +28,51 @@ const addProduct = async (payload, user) => {
   }
 };
 
+const getProduct = async (payload, user) => {
+  try {
+    const product = await productServices.getProductById(payload._id);
+
+    if (!product) {
+      throw createErrorObject(
+        STATUS_CODE.NOT_FOUND,
+        ERROR_MESSAGES.DATA_NOT_FOUND,
+        {}
+      );
+    }
+
+    //do user has the right role. Only the user who created the product can read it.
+    if (product.user && product.user !== user.email) {
+      logger.warn("User doesn't have the right role to read product.");
+      throw createErrorObject(
+        STATUS_CODE.UNAUTHORIZED,
+        ERROR_MESSAGES.NOT_RIGHT_ROLE,
+        {}
+      );
+    }
+
+    const filteredProduct = filterProduct(product);
+
+    return createSuccessObject(
+      STATUS_CODE.OK,
+      SUCCESS_MESSAGES.ACTION_COMPLETE,
+      filteredProduct
+    );
+  } catch (e) {
+    logger.error(
+      `Product controller: Error in fetching products: ${JSON.stringify(e)}`
+    );
+    throw e;
+  }
+};
+
+const filterProduct = product => {
+  product.__v = undefined;
+  product.user = undefined;
+  console.log(product);
+  return product;
+};
+
 module.exports = {
-  addProduct
+  addProduct,
+  getProduct
 };
