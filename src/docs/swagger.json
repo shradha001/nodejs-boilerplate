@@ -1,44 +1,59 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.1",
   "info": {
+    "title": "Swagger REST API",
     "description": "REST API documentation <style>.models {display: none !important}</style>",
-    "version": "1.0.0",
-    "title": "Swagger REST API"
+    "version": "1.0.0"
   },
+  "servers": [
+    {
+      "url": "/api/v1"
+    }
+  ],
   "tags": [
     {
       "name": "users",
-      "description": "Operations about user"
+      "description": "Operations on user"
+    },
+    {
+      "name": "products",
+      "description": "Operations on products"
     }
   ],
-  "basePath": "/api/v1",
-  "schemes": ["https", "http"],
   "paths": {
     "/users/register": {
       "post": {
         "tags": ["users"],
         "summary": "Signup",
         "description": "User registration API",
-        "consumes": ["application/json"],
-        "produces": ["application/json"],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "required": true,
-            "description": "user object",
-            "schema": { "$ref": "#/definitions/UserPayload" }
-          }
-        ],
+        "requestBody": {
+          "description": "user object",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserPayload"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "201": {
             "description": "action complete",
-            "schema": {
-              "$ref": "#/definitions/PostUserResponse"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostUserResponse"
+                }
+              }
             }
           },
-          "400": { "description": "something went wrong" }
-        }
+          "400": {
+            "description": "something went wrong",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
       }
     },
     "/users/login": {
@@ -46,42 +61,278 @@
         "tags": ["users"],
         "summary": "Login",
         "description": "User login API",
-        "consumes": ["application/json"],
-        "produces": ["application/json"],
+        "requestBody": {
+          "description": "user object",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "action complete",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostUserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "something went wrong",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/products": {
+      "get": {
+        "tags": ["products"],
+        "summary": "Get a product",
         "parameters": [
           {
-            "in": "body",
-            "name": "body",
+            "name": "_id",
+            "in": "query",
+            "description": "product id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "action complete",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetProductResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "something went wrong",
+            "content": {}
+          },
+          "404": {
+            "description": "data not found",
+            "content": {}
+          }
+        }
+      },
+      "put": {
+        "tags": ["products"],
+        "summary": "Update an existing product",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
             "required": true,
-            "description": "user object",
-            "schema": { "$ref": "#/definitions/UserPayload" }
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddProductReqPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "action complete",
+            "content": {}
+          },
+          "400": {
+            "description": "something went wrong",
+            "content": {}
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {}
+          },
+          "404": {
+            "description": "data not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      },
+      "post": {
+        "tags": ["products"],
+        "summary": "Add a product",
+        "requestBody": {
+          "description": "product",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddProductReqPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "bearerAuth": []
           }
         ],
         "responses": {
           "201": {
             "description": "action complete",
-            "schema": {
-              "$ref": "#/definitions/PostUserResponse"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddProductResponse"
+                }
+              }
             }
           },
-          "400": { "description": "something went wrong" }
+          "400": {
+            "description": "something went wrong",
+            "content": {}
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      },
+      "delete": {
+        "tags": ["products"],
+        "summary": "Delete an existing product",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "action complete",
+            "content": {}
+          },
+          "400": {
+            "description": "something went wrong",
+            "content": {}
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {}
+          },
+          "404": {
+            "description": "data not found",
+            "content": {}
+          }
         }
       }
     }
   },
-  "definitions": {
-    "PostUserResponse": {
-      "type": "object",
-      "properties": {
-        "token": { "type": "string" },
-        "expiry": { "type": "integer" }
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
       }
     },
-    "UserPayload": {
-      "type": "object",
-      "properties": {
-        "email": { "type": "string" },
-        "password": { "type": "string" }
+    "schemas": {
+      "PostUserResponse": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          },
+          "expiry": {
+            "type": "integer"
+          }
+        }
+      },
+      "UserPayload": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "AddProductResponse": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          }
+        }
+      },
+      "AddProductReqPayload": {
+        "type": "object",
+        "properties": {
+          "productName": {
+            "type": "string"
+          },
+          "productCode": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          }
+        }
+      },
+      "GetProductResponse": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "productName": {
+            "type": "string"
+          },
+          "productCode": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          }
+        }
       }
     }
   }
