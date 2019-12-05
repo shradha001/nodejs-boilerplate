@@ -11,7 +11,7 @@ const saveProduct = async payload => {
     Object.assign(product, payload);
     await product.save();
   } catch (e) {
-    logger.error(`Service: Error in adding products: ${JSON.stringify(e)}`);
+    logger.error(`Error in adding products: ${JSON.stringify(e)}`);
     throw e;
   }
 };

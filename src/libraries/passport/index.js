@@ -12,7 +12,7 @@ const hashUtil = utilities.hashUtil;
 const userService = services.users;
 const { constants } = config;
 
-const loginConfig = passport => {
+const authStrategiesConfig = passport => {
   passport.serializeUser(function(user, done) {
     done(null, user.email);
   });
@@ -79,4 +79,4 @@ const loginConfig = passport => {
   );
 };
 
-module.exports = loginConfig;
+module.exports = authStrategiesConfig;

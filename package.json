@@ -4,6 +4,8 @@
   "description": "Node.js project structure using Express and Mongoose",
   "scripts": {
     "start": "node src/bin/www",
+    "dev": "NODE_ENV=development nodemon",
+    "pm2": "pm2 start --name nodejs-boilerplate src/bin/www",
     "test": "mocha  src/test/index.js",
     "coverage": "./node_modules/.bin/nyc npm run test",
     "coveralls": "./node_modules/.bin/nyc --reporter=lcov mocha src/test/index.js && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
@@ -90,7 +92,9 @@
     "husky": "^3.1.0",
     "lint-staged": "^9.4.3",
     "mocha": "^6.2.0",
+    "nodemon": "^2.0.1",
     "nyc": "^14.1.1",
+    "pm2": "^4.2.0",
     "prettier": "1.19.1",
     "supertest": "^4.0.2"
   }
