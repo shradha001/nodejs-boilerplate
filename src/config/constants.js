@@ -14,7 +14,9 @@ module.exports = {
     ? process.env.HASH_SALT_ROUNDS
     : 10,
   JWT: {
-    secret: process.env.JWT_SECRET,
+    secret: process.env.JWT_SECRET
+      ? process.env.JWT_SECRET
+      : "do-not-save-it-here",
     expiryInMins: process.env.JWT_EXPIRY_IN_MINS
       ? process.env.JWT_EXPIRY_IN_MINS
       : 60
@@ -24,4 +26,6 @@ module.exports = {
     max: 12
   },
   SESSION_SECRET: process.env.SESSION_SECRET
+    ? process.env.SESSION_SECRET
+    : "have-it-only-in-.env"
 };
