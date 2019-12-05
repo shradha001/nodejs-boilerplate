@@ -50,6 +50,13 @@ const validProduct2 = {
   price: 19
 };
 
+const updateProductDetails = {
+  productName: "product 3",
+  productCode: "GDN-0011",
+  description: "Leaf rake with 48-inch wooden handle.",
+  price: 19
+};
+
 const dataToHash = "testuser@gmail.com";
 
 const jwtPayload = { email: "test@gmail.com" };
@@ -65,5 +72,6 @@ module.exports = {
   dataToHash,
   jwtPayload,
   validUser5,
-  validProduct2
+  validProduct2,
+  updateProductDetails
 };
