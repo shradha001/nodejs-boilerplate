@@ -17,8 +17,35 @@
     "/users/register": {
       "post": {
         "tags": ["users"],
-        "summary": "Register a user",
+        "summary": "Signup",
         "description": "User registration API",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "description": "user object",
+            "schema": { "$ref": "#/definitions/UserPayload" }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "action complete",
+            "schema": {
+              "$ref": "#/definitions/PostUserResponse"
+            }
+          },
+          "400": { "description": "something went wrong" }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": ["users"],
+        "summary": "Login",
+        "description": "User login API",
         "consumes": ["application/json"],
         "produces": ["application/json"],
         "parameters": [
