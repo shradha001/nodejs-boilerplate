@@ -62,7 +62,7 @@ const registerUser = async payload => {
       { token: jwtToken, expiry: constants.JWT.expiryInMins * 60 }
     );
   } catch (e) {
-    logger.error(`Controller: Error in adding users: ${JSON.stringify(e)}`);
+    logger.error(`Error in adding users: ${JSON.stringify(e)}`);
     throw e;
   }
 };
@@ -78,7 +78,7 @@ const loginUser = async payload => {
       { token: jwtToken, expiry: constants.JWT.expiryInMins * 60 }
     );
   } catch (e) {
-    logger.error(`Controller: Error in login users: ${JSON.stringify(e)}`);
+    logger.error(`Error in login users: ${JSON.stringify(e)}`);
     throw e;
   }
 };

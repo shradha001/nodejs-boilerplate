@@ -58,9 +58,7 @@ const getProduct = async (payload, user) => {
       filteredProduct
     );
   } catch (e) {
-    logger.error(
-      `Product controller: Error in fetching products: ${JSON.stringify(e)}`
-    );
+    logger.error(`Error in fetching products: ${JSON.stringify(e)}`);
     throw e;
   }
 };
@@ -97,9 +95,7 @@ const updateProduct = async (payload, user) => {
       {}
     );
   } catch (e) {
-    logger.error(
-      `Product controller: Error in updating products: ${JSON.stringify(e)}`
-    );
+    logger.error(`Error in updating products: ${JSON.stringify(e)}`);
     throw e;
   }
 };
@@ -134,9 +130,7 @@ const deleteProduct = async (payload, user) => {
       {}
     );
   } catch (e) {
-    logger.error(
-      `Product controller: Error in fetching products: ${JSON.stringify(e)}`
-    );
+    logger.error(`Error in fetching products: ${JSON.stringify(e)}`);
     throw e;
   }
 };
