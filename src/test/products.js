@@ -290,4 +290,110 @@ describe("Products", function() {
       expect(result.status).to.equal(401);
     });
   });
+
+  describe("DELETE /products", function() {
+    beforeEach(async function() {
+      await Product.deleteMany();
+      await User.deleteMany();
+    });
+
+    it("should delete product successfully", async function() {
+      const userDetails = common.validUser4;
+      const productDetails = common.validProduct2;
+
+      let result = await request(app)
+        .post("/api/v1/users/register")
+        .send(userDetails);
+
+      const token = result.body.data.token;
+
+      result = await request(app)
+        .post("/api/v1/products")
+        .set("Authorization", `bearer ${token}`)
+        .send(productDetails);
+
+      const _id = result.body.data._id;
+
+      result = await request(app)
+        .delete(`/api/v1/products?_id=${_id}`)
+        .set("Authorization", `bearer ${token}`);
+
+      expect(result.status).to.equal(200);
+    });
+
+    it("should fail to delete product (no token)", async function() {
+      const userDetails = common.validUser4;
+      const productDetails = common.validProduct2;
+
+      let result = await request(app)
+        .post("/api/v1/users/register")
+        .send(userDetails);
+
+      const token = result.body.data.token;
+
+      result = await request(app)
+        .post("/api/v1/products")
+        .set("Authorization", `bearer ${token}`)
+        .send(productDetails);
+
+      const _id = result.body.data._id;
+
+      result = await request(app).delete(`/api/v1/products?_id=${_id}`);
+
+      expect(result.status).to.equal(401);
+    });
+
+    it("should fail to update product(invalid _id)", async function() {
+      const userDetails = common.validUser4;
+      const productDetails = common.validProduct2;
+
+      let result = await request(app)
+        .post("/api/v1/users/register")
+        .send(userDetails);
+
+      const token = result.body.data.token;
+
+      result = await request(app)
+        .post("/api/v1/products")
+        .set("Authorization", `bearer ${token}`)
+        .send(productDetails);
+
+      const _id = "1234";
+
+      result = await request(app)
+        .delete(`/api/v1/products?_id=${_id}`)
+        .set("Authorization", `bearer ${token}`);
+
+      expect(result.status).to.equal(404);
+    });
+
+    it("should fail to update product(not the right role)", async function() {
+      const productDetails = common.validProduct2;
+
+      let result = await request(app)
+        .post("/api/v1/users/register")
+        .send(common.validUser4);
+
+      const tokenForUser4 = result.body.data.token;
+
+      result = await request(app)
+        .post("/api/v1/users/register")
+        .send(common.validUser5);
+
+      const tokenForUser5 = result.body.data.token;
+
+      result = await request(app)
+        .post("/api/v1/products")
+        .set("Authorization", `bearer ${tokenForUser4}`)
+        .send(productDetails);
+
+      const _id = result.body.data._id;
+
+      result = await request(app)
+        .delete(`/api/v1/products?_id=${_id}`)
+        .set("Authorization", `bearer ${tokenForUser5}`);
+
+      expect(result.status).to.equal(401);
+    });
+  });
 });
