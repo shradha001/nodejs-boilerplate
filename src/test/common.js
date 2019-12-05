@@ -16,6 +16,11 @@ const validUser3 = {
   password: "dsf55353453"
 };
 
+const validUser4 = {
+  email: "admin2@gmail.com",
+  password: "Alpha123"
+};
+
 const invalidEmail = {
   email: "admin",
   password: "Alpha123"
@@ -26,10 +31,25 @@ const invalidPassword = {
   password: "alpha123"
 };
 
+const validProduct1 = {
+  productName: "Leaf Rake",
+  productCode: "GDN-0011",
+  description: "Leaf rake with 48-inch wooden handle.",
+  price: 19.95
+};
+
+const dataToHash = "testuser@gmail.com";
+
+const jwtPayload = { email: "test@gmail.com" };
+
 module.exports = {
   validUser1,
   validUser2,
   validUser3,
   invalidEmail,
-  invalidPassword
+  invalidPassword,
+  validProduct1,
+  validUser4,
+  dataToHash,
+  jwtPayload
 };

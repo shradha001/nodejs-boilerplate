@@ -5,7 +5,6 @@ const passport = require("passport");
 
 const utilities = require("../utilities");
 const controller = require("../controllers");
-const logger = require("../libraries/logger");
 
 const productController = controller.products;
 const { createErrorObject } = utilities.utils;
@@ -23,10 +22,7 @@ const addProduct = {
       description: Joi.string()
         .trim()
         .required(),
-      price: Joi.number().required(),
-      imageUrl: Joi.string()
-        .trim()
-        .required()
+      price: Joi.number().required()
     })
   }
 };
@@ -48,7 +44,6 @@ module.exports = app => {
           .status(successResponse.httpStatusCode)
           .json(successResponse.details);
       } catch (e) {
-        logger.error(`Error in adding product ${e}`);
         let error = e;
         if (!e.details) error = createErrorObject();
         res.status(error.httpStatusCode).json(error.details);

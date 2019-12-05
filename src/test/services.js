@@ -14,7 +14,7 @@ const User = models.user;
 
 chai.use(chaiAsPromised);
 
-describe("Services testing", function() {
+describe("Services", function() {
   beforeEach(async function() {
     await User.deleteMany();
   });
