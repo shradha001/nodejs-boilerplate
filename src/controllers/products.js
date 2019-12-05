@@ -68,7 +68,6 @@ const getProduct = async (payload, user) => {
 const filterProduct = product => {
   product.__v = undefined;
   product.user = undefined;
-  console.log(product);
   return product;
 };
 

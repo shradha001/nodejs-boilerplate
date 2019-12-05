@@ -78,7 +78,6 @@ module.exports = app => {
           .status(successResponse.httpStatusCode)
           .json(successResponse.details);
       } catch (e) {
-        console.log(e);
         let error = e;
         if (!e.details) error = createErrorObject();
         res.status(error.httpStatusCode).json(error.details);
