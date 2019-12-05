@@ -104,6 +104,43 @@ const updateProduct = async (payload, user) => {
   }
 };
 
+const deleteProduct = async (payload, user) => {
+  try {
+    const product = await productServices.getProductById(payload._id);
+
+    if (!product) {
+      throw createErrorObject(
+        STATUS_CODE.NOT_FOUND,
+        ERROR_MESSAGES.DATA_NOT_FOUND,
+        {}
+      );
+    }
+
+    //do user has the right role. Only the user who created the product can read it.
+    if (product.user && product.user !== user.email) {
+      logger.warn("User doesn't have the right role to read product.");
+      throw createErrorObject(
+        STATUS_CODE.UNAUTHORIZED,
+        ERROR_MESSAGES.NOT_RIGHT_ROLE,
+        {}
+      );
+    }
+
+    await productServices.deleteProduct(payload._id);
+
+    return createSuccessObject(
+      STATUS_CODE.OK,
+      SUCCESS_MESSAGES.ACTION_COMPLETE,
+      {}
+    );
+  } catch (e) {
+    logger.error(
+      `Product controller: Error in fetching products: ${JSON.stringify(e)}`
+    );
+    throw e;
+  }
+};
+
 const filterProduct = product => {
   product.__v = undefined;
   product.user = undefined;
@@ -113,5 +150,6 @@ const filterProduct = product => {
 module.exports = {
   addProduct,
   getProduct,
-  updateProduct
+  updateProduct,
+  deleteProduct
 };

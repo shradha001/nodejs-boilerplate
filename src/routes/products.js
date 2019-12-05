@@ -61,6 +61,17 @@ const updateProduct = {
   }
 };
 
+const deleteProduct = {
+  path: "/api/v1/products",
+  validation: {
+    query: Joi.object().keys({
+      _id: Joi.string()
+        .trim()
+        .required()
+    })
+  }
+};
+
 module.exports = app => {
   app.post(
     addProduct.path,
@@ -119,6 +130,29 @@ module.exports = app => {
         let payload = req.body;
         payload = { ...payload, ...queryParams };
         const successResponse = await productController.updateProduct(
+          payload,
+          user
+        );
+        res
+          .status(successResponse.httpStatusCode)
+          .json(successResponse.details);
+      } catch (e) {
+        let error = e;
+        if (!e.details) error = createErrorObject();
+        res.status(error.httpStatusCode).json(error.details);
+      }
+    }
+  );
+
+  app.delete(
+    deleteProduct.path,
+    celebrate(deleteProduct.validation),
+    passport.authenticate("jwt", { session: false }),
+    async (req, res) => {
+      try {
+        const user = req.user;
+        const payload = req.query;
+        const successResponse = await productController.deleteProduct(
           payload,
           user
         );

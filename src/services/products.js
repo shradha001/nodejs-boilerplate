@@ -34,8 +34,18 @@ const updateProduct = async (_id, payload) => {
   }
 };
 
+const deleteProduct = async _id => {
+  try {
+    await Product.deleteOne({ _id });
+  } catch (e) {
+    logger.error(`Error in deleting a product: ${JSON.stringify(e)}`);
+    throw e;
+  }
+};
+
 module.exports = {
   saveProduct,
   getProductById,
-  updateProduct
+  updateProduct,
+  deleteProduct
 };
