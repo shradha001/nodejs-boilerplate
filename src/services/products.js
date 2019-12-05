@@ -25,7 +25,17 @@ const getProductById = async _id => {
   }
 };
 
+const updateProduct = async (_id, payload) => {
+  try {
+    await Product.updateOne({ _id }, payload);
+  } catch (e) {
+    logger.error(`Error in updating products: ${JSON.stringify(e)}`);
+    throw e;
+  }
+};
+
 module.exports = {
   saveProduct,
-  getProductById
+  getProductById,
+  updateProduct
 };

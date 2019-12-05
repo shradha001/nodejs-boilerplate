@@ -65,6 +65,45 @@ const getProduct = async (payload, user) => {
   }
 };
 
+const updateProduct = async (payload, user) => {
+  try {
+    const product = await productServices.getProductById(payload._id);
+
+    if (!product) {
+      throw createErrorObject(
+        STATUS_CODE.NOT_FOUND,
+        ERROR_MESSAGES.DATA_NOT_FOUND,
+        {}
+      );
+    }
+
+    //do user has the right role. Only the user who created the product can update it.
+    if (product.user && product.user !== user.email) {
+      logger.warn("User doesn't have the right role to update product.");
+      throw createErrorObject(
+        STATUS_CODE.UNAUTHORIZED,
+        ERROR_MESSAGES.NOT_RIGHT_ROLE,
+        {}
+      );
+    }
+
+    Object.assign(product, payload);
+
+    await productServices.updateProduct(payload._id, product);
+
+    return createSuccessObject(
+      STATUS_CODE.OK,
+      SUCCESS_MESSAGES.ACTION_COMPLETE,
+      {}
+    );
+  } catch (e) {
+    logger.error(
+      `Product controller: Error in updating products: ${JSON.stringify(e)}`
+    );
+    throw e;
+  }
+};
+
 const filterProduct = product => {
   product.__v = undefined;
   product.user = undefined;
@@ -73,5 +112,6 @@ const filterProduct = product => {
 
 module.exports = {
   addProduct,
-  getProduct
+  getProduct,
+  updateProduct
 };
