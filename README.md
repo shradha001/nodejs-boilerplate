@@ -102,17 +102,18 @@ You can also change these configuration in `config/` directory. Checkout `.env.s
 - `commit`: Create commit message
 
 ## Runing with Docker
-```
-# To run in Docker
-docker-compose up
-# use -d flag to run in detached mode
 
-# Tear down
-docker-compose down
+####  Run in Docker
+`docker-compose up`
 
-# To re-build
-docker-compose build
-```
+> use -d flag to run in detached mode
+
+#### Tear down
+`docker-compose down`
+
+#### To re-build
+`docker-compose build`
+  
   
   ## Roadmap
 
