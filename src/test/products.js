@@ -321,6 +321,34 @@ describe("Products", function() {
       expect(result.status).to.equal(200);
     });
 
+    it("should fail to delete product(already deleted)", async function() {
+      const userDetails = common.validUser4;
+      const productDetails = common.validProduct2;
+
+      let result = await request(app)
+        .post("/api/v1/users/register")
+        .send(userDetails);
+
+      const token = result.body.data.token;
+
+      result = await request(app)
+        .post("/api/v1/products")
+        .set("Authorization", `bearer ${token}`)
+        .send(productDetails);
+
+      const _id = result.body.data._id;
+
+      result = await request(app)
+        .delete(`/api/v1/products?_id=${_id}`)
+        .set("Authorization", `bearer ${token}`);
+
+        result = await request(app)
+        .delete(`/api/v1/products?_id=${_id}`)
+        .set("Authorization", `bearer ${token}`);
+
+      expect(result.status).to.equal(404);
+    });
+
     it("should fail to delete product (no token)", async function() {
       const userDetails = common.validUser4;
       const productDetails = common.validProduct2;
@@ -343,7 +371,7 @@ describe("Products", function() {
       expect(result.status).to.equal(401);
     });
 
-    it("should fail to update product(invalid _id)", async function() {
+    it("should fail to delete product(invalid _id)", async function() {
       const userDetails = common.validUser4;
       const productDetails = common.validProduct2;
 
@@ -367,7 +395,7 @@ describe("Products", function() {
       expect(result.status).to.equal(404);
     });
 
-    it("should fail to update product(not the right role)", async function() {
+    it("should fail to delete product(not the right role)", async function() {
       const productDetails = common.validProduct2;
 
       let result = await request(app)
