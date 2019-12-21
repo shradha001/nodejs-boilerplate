@@ -1,0 +1,14 @@
+version: "2"
+services:
+  app:
+    container_name: restapi
+    restart: always
+    build: .
+    ports:
+      - "9597:9597"
+    environment:
+      - DOCKER_MODE=true
+    links:
+      - mongo
+  mongo:
+    image: mongo:latest

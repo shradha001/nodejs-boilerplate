@@ -78,6 +78,7 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^8.2.0",
     "@commitlint/prompt": "^8.2.0",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
