@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = {
+const respCodeAndMsg = {
   STATUS_CODE: {
     OK: 200,
     CREATED: 201,
@@ -26,3 +26,5 @@ module.exports = {
     ACTION_COMPLETE: "Action complete."
   }
 };
+
+export default respCodeAndMsg;

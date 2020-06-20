@@ -1,6 +1,6 @@
 "use strict";
 
-const { isCelebrate } = require("celebrate");
+import { isCelebrate } from "celebrate";
 
 const errorHandler = (err, req, res, next) => {
   if (err) {
@@ -24,4 +24,4 @@ const errorHandler = (err, req, res, next) => {
   }
 };
 
-module.exports = errorHandler;
+export default errorHandler;

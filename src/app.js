@@ -1,26 +1,29 @@
 "use strict";
 
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
-const express = require("express");
-const passport = require("passport");
-const rateLimit = require("express-rate-limit");
-const helmet = require("helmet");
-const morgan = require("morgan");
-const path = require("path");
-const cors = require("cors");
-const swaggerUI = require("swagger-ui-express");
-const session = require("express-session");
+import express from "express";
+import passport from "passport";
+import rateLimit from "express-rate-limit";
+import helmet from "helmet";
+import morgan from "morgan";
+import path from "path";
+import cors from "cors";
+import swaggerUI from "swagger-ui-express";
+import session from "express-session";
+import passportLib from "./libraries/passport";
 
-const logger = require("./libraries/logger");
-const routes = require("./routes");
-const { errorHandler } = require("./middleware");
-const { constants } = require("./config");
-const swaggerDoc = require("./docs/swagger");
+import logger from "./libraries/logger";
+import routes from "./routes";
+import { errorHandler } from "./middleware";
+import { constants } from "./config";
+import swaggerDoc from "./docs/swagger";
+import * as database from "./database";
 
-require("./libraries/passport")(passport);
+passportLib(passport);
 
-if (process.env.NODE_ENV !== "test") require("./database").getConnection();
+if (process.env.NODE_ENV !== "test") database.getConnection();
 
 const app = express();
 
@@ -53,4 +56,4 @@ routes(app);
 
 app.use(errorHandler);
 
-module.exports = app;
+export default app;

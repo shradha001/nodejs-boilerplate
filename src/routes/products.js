@@ -1,13 +1,12 @@
 "use strict";
 
-const { celebrate, Joi } = require("celebrate");
-const passport = require("passport");
+import { celebrate, Joi } from "celebrate";
+import passport from "passport";
 
-const utilities = require("../utilities");
-const controller = require("../controllers");
+import { utils } from "../utilities";
+import { products as productController } from "../controllers";
 
-const productController = controller.products;
-const { createErrorObject } = utilities.utils;
+const { createErrorObject } = utils;
 
 const addProduct = {
   path: "/api/v1/products",
@@ -72,7 +71,7 @@ const deleteProduct = {
   }
 };
 
-module.exports = app => {
+export default function routes(app) {
   app.post(
     addProduct.path,
     celebrate(addProduct.validation),
@@ -166,4 +165,4 @@ module.exports = app => {
       }
     }
   );
-};
+}

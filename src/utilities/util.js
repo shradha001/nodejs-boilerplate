@@ -1,10 +1,11 @@
 "use strict";
 
-const _ = require("lodash");
-const uuidv4 = require("uuid/v4");
-const passwordValidator = require("password-validator");
+import _ from "lodash";
+import uuidv4 from "uuid/v4";
+import passwordValidator from "password-validator";
 
-const { respCodeAndMsg, constants } = require("../config");
+import { respCodeAndMsg, constants } from "../config";
+
 const { STATUS_CODE } = respCodeAndMsg;
 
 const createErrorObject = (httpStatusCode, message, data) => {
@@ -55,7 +56,7 @@ const validatePassword = password => {
   return passwordSchema.validate(password);
 };
 
-module.exports = {
+export {
   createErrorObject,
   isEmptyObject,
   createSuccessObject,

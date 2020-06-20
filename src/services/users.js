@@ -1,9 +1,7 @@
 "use strict";
 
-const models = require("../models");
-const logger = require("../libraries/logger");
-
-const User = models.user;
+import { user as User } from "../models";
+import logger from "../libraries/logger";
 
 const saveUser = async payload => {
   try {
@@ -25,7 +23,4 @@ const getUserByEmail = async email => {
   }
 };
 
-module.exports = {
-  saveUser,
-  getUserByEmail
-};
+export { saveUser, getUserByEmail };

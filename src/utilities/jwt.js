@@ -1,10 +1,11 @@
 "use strict";
 
-const jwt = require("jsonwebtoken");
-const Promise = require("bluebird");
+import jwt from "jsonwebtoken";
+import Promise from "bluebird";
 
-const logger = require("../libraries/logger");
-const { constants } = require("../config");
+import logger from "../libraries/logger";
+import { constants } from "../config";
+
 const { JWT } = constants;
 
 Promise.promisifyAll(jwt);
@@ -21,6 +22,4 @@ const generateJWT = async payload => {
   }
 };
 
-module.exports = {
-  generateJWT
-};
+export { generateJWT };

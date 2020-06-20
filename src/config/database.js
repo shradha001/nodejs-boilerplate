@@ -1,5 +1,8 @@
 "use strict";
 
-module.exports = {
-  database: process.env.DB_NAME || "demo"
+const dbConfig = {
+  database: process.env.DB_NAME || "demo",
+  url: process.env.MONGODB_URL || "mongodb://localhost"
 };
+
+export default dbConfig;

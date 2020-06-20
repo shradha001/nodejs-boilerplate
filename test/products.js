@@ -1,11 +1,11 @@
 "use strict";
 
-const chai = require("chai");
-const request = require("supertest");
+import chai from "chai";
+import request from "supertest";
 
-const models = require("../models");
-const app = require("../app");
-const common = require("./common");
+import * as models from "../src/models";
+import app from "../src/app";
+import * as common from "./common";
 
 const expect = chai.expect;
 const Product = models.product;
@@ -342,7 +342,7 @@ describe("Products", function() {
         .delete(`/api/v1/products?_id=${_id}`)
         .set("Authorization", `bearer ${token}`);
 
-        result = await request(app)
+      result = await request(app)
         .delete(`/api/v1/products?_id=${_id}`)
         .set("Authorization", `bearer ${token}`);
 

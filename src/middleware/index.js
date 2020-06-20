@@ -1,5 +1,5 @@
 "use strict";
 
-module.exports = {
-  errorHandler: require("./error-handler")
-};
+import errorHandler from "./error-handler";
+
+export { errorHandler };

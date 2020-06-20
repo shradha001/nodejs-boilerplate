@@ -1,8 +1,8 @@
 "use strict";
 
-module.exports = {
-  serverConfig: require("./server"),
-  respCodeAndMsg: require("./responses"),
-  constants: require("./constants"),
-  dbConfig: require("./database")
-};
+import serverConfig from "./server";
+import respCodeAndMsg from "./responses";
+import constants from "./constants";
+import dbConfig from "./database";
+
+export { serverConfig, respCodeAndMsg, constants, dbConfig };

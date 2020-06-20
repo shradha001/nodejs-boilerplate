@@ -1,9 +1,7 @@
 "use strict";
 
-const models = require("../models");
-const logger = require("../libraries/logger");
-
-const Product = models.product;
+import { product as Product } from "../models";
+import logger from "../libraries/logger";
 
 const saveProduct = async payload => {
   try {
@@ -43,9 +41,4 @@ const deleteProduct = async _id => {
   }
 };
 
-module.exports = {
-  saveProduct,
-  getProductById,
-  updateProduct,
-  deleteProduct
-};
+export { saveProduct, getProductById, updateProduct, deleteProduct };

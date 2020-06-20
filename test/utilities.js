@@ -1,13 +1,12 @@
 "use strict";
-require("dotenv").config();
 
-const chai = require("chai");
+import chai from "chai";
+import chaiAsPromised from "chai-as-promised";
+
 const expect = chai.expect;
-const chaiAsPromised = require("chai-as-promised");
-
 chai.use(chaiAsPromised);
 
-const utilities = require("../utilities");
+const utilities = require("../src/utilities");
 const common = require("./common");
 
 const { hashUtil, jwtUtil } = utilities;

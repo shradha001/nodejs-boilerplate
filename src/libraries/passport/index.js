@@ -1,16 +1,14 @@
 "use strict";
 
-const LocalStrategy = require("passport-local").Strategy;
-const JWTstrategy = require("passport-jwt").Strategy;
-const ExtractJWT = require("passport-jwt").ExtractJwt;
+import {
+  Strategy as JWTstrategy,
+  ExtractJwt as ExtractJWT
+} from "passport-jwt";
+import { Strategy as LocalStrategy } from "passport-local";
 
-const services = require("../../services");
-const utilities = require("../../utilities");
-const config = require("../../config");
-
-const hashUtil = utilities.hashUtil;
-const userService = services.users;
-const { constants } = config;
+import { users as userService } from "../../services";
+import { hashUtil } from "../../utilities";
+import { constants } from "../../config";
 
 const authStrategiesConfig = passport => {
   passport.serializeUser(function(user, done) {
@@ -79,4 +77,4 @@ const authStrategiesConfig = passport => {
   );
 };
 
-module.exports = authStrategiesConfig;
+export default authStrategiesConfig;

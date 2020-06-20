@@ -1,6 +1,6 @@
 "use strict";
 
-let mongoose = require("mongoose");
+import mongoose from "mongoose";
 let Schema = mongoose.Schema;
 
 let ProductSchema = new Schema({
@@ -38,4 +38,6 @@ ProductSchema.pre("save", next => {
   next();
 });
 
-module.exports = mongoose.model("products", ProductSchema);
+const ProductModel = mongoose.model("products", ProductSchema);
+
+export default ProductModel;

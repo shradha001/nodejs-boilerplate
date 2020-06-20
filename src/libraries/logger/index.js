@@ -1,10 +1,14 @@
-const path = require("path");
-const { createLogger, format, transports } = require("winston");
-const { combine, timestamp, printf } = format;
-const { constants } = require("../../config");
-const logLevel = constants.logger.level;
+"use strict";
 
-const errorFile = path.join(__dirname, "/../../../logs/error.log");
+import winston from "winston";
+import root from "app-root-path";
+
+import { constants } from "../../config";
+
+const { createLogger, format, transports } = winston;
+const { combine, timestamp, printf } = format;
+const logLevel = constants.logger.level;
+const errorFile = `${root.path}/logs/error.log`;
 
 const logFormat = printf(detail => {
   return `${detail.timestamp} ${detail.level}: ${detail.message}`;
@@ -33,4 +37,4 @@ if (process.env.NODE_ENV == "test") {
   logger.remove(logger.transports.Console);
 }
 
-module.exports = logger;
+export default logger;
