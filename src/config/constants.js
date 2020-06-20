@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = {
+const constants = {
   logger: {
     level: process.env.LOG_LEVEL || "info"
   },
@@ -30,3 +30,5 @@ module.exports = {
     : "have-it-only-in-.env",
   DOCKER_MODE: process.env.DOCKER_MODE ? process.env.DOCKER_MODE : false
 };
+
+export default constants;

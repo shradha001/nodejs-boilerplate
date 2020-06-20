@@ -1,9 +1,9 @@
 "use strict";
 
-const bcrypt = require("bcrypt");
+import bcrypt from "bcrypt";
 
-const logger = require("../libraries/logger");
-const { constants } = require("../config");
+import logger from "../libraries/logger";
+import { constants } from "../config";
 
 const hashData = async data => {
   try {
@@ -22,7 +22,4 @@ const compareHash = async (data, hash) => {
   }
 };
 
-module.exports = {
-  hashData,
-  compareHash
-};
+export { hashData, compareHash };

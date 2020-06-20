@@ -1,21 +1,19 @@
 "use strict";
 
-const logger = require("../libraries/logger");
-const services = require("../services");
-const utilities = require("../utilities");
-const config = require("../config");
+import { users as userService } from "../services";
+import { utils, hashUtil, jwtUtil } from "../utilities";
+import { respCodeAndMsg, constants } from "../config";
+import logger from "../libraries/logger";
 
 const {
   createSuccessObject,
   createErrorObject,
   getUUID,
   validatePassword
-} = utilities.utils;
-const { hashData } = utilities.hashUtil;
-const { generateJWT } = utilities.jwtUtil;
-const { respCodeAndMsg, constants } = config;
+} = utils;
+const { hashData } = hashUtil;
+const { generateJWT } = jwtUtil;
 const { STATUS_CODE, ERROR_MESSAGES, SUCCESS_MESSAGES } = respCodeAndMsg;
-const userService = services.users;
 
 const registerUser = async payload => {
   try {
@@ -83,7 +81,4 @@ const loginUser = async payload => {
   }
 };
 
-module.exports = {
-  registerUser,
-  loginUser
-};
+export { registerUser, loginUser };

@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = {
-  user: require("./users"),
-  product: require("./products")
-};
+import user from "./users";
+import product from "./products";
+
+export { user, product };

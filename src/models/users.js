@@ -1,6 +1,6 @@
 "use strict";
 
-let mongoose = require("mongoose");
+import mongoose from "mongoose";
 let Schema = mongoose.Schema;
 
 let UserSchema = new Schema({
@@ -26,4 +26,6 @@ UserSchema.pre("save", next => {
   next();
 });
 
-module.exports = mongoose.model("users", UserSchema);
+const UserModel = mongoose.model("users", UserSchema);
+
+export default UserModel;

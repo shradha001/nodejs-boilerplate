@@ -61,7 +61,7 @@ const dataToHash = "testuser@gmail.com";
 
 const jwtPayload = { email: "test@gmail.com" };
 
-module.exports = {
+export {
   validUser1,
   validUser2,
   validUser3,

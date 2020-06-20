@@ -1,14 +1,13 @@
 "use strict";
 
-const { celebrate, Joi } = require("celebrate");
-const passport = require("passport");
+import { celebrate, Joi } from "celebrate";
+import passport from "passport";
 
-const utilities = require("../utilities");
-const controllers = require("../controllers");
-const logger = require("../libraries/logger");
+import { utils } from "../utilities";
+import { users as userController } from "../controllers";
+import logger from "../libraries/logger";
 
-const { createErrorObject } = utilities.utils;
-const userController = controllers.users;
+const { createErrorObject } = utils;
 
 const register = {
   path: "/api/v1/users/register",
@@ -40,7 +39,7 @@ const login = {
   }
 };
 
-module.exports = app => {
+export default function routes(app) {
   app.post(register.path, celebrate(register.validation), async (req, res) => {
     try {
       const payload = req.body;
@@ -73,4 +72,4 @@ module.exports = app => {
       }
     }
   );
-};
+}

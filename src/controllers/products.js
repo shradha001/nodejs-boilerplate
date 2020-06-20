@@ -1,14 +1,12 @@
 "use strict";
 
-const services = require("../services");
-const utilities = require("../utilities");
-const config = require("../config");
-const logger = require("../libraries/logger");
+import { products as productServices } from "../services";
+import { utils } from "../utilities";
+import { respCodeAndMsg } from "../config";
+import logger from "../libraries/logger";
 
-const { respCodeAndMsg } = config;
 const { STATUS_CODE, SUCCESS_MESSAGES, ERROR_MESSAGES } = respCodeAndMsg;
-const { createSuccessObject, getUUID, createErrorObject } = utilities.utils;
-const productServices = services.products;
+const { createSuccessObject, getUUID, createErrorObject } = utils;
 
 const addProduct = async (payload, user) => {
   try {
@@ -141,9 +139,4 @@ const filterProduct = product => {
   return product;
 };
 
-module.exports = {
-  addProduct,
-  getProduct,
-  updateProduct,
-  deleteProduct
-};
+export { addProduct, getProduct, updateProduct, deleteProduct };

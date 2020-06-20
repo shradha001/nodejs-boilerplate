@@ -4,9 +4,10 @@ process.env.NODE_ENV = "test";
 process.env.JWT_SECRET = "thisisasecret";
 process.env.SESSION_SECRET = "thisissessionsecret";
 
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const DATABASE_NAME = "demo-test";
 

@@ -1,12 +1,14 @@
 "use strict";
-const mongoose = require("mongoose");
-const logger = require("../libraries/logger");
-const { dbConfig, constants } = require("../config");
+
+import mongoose from "mongoose";
+import logger from "../libraries/logger";
+import { dbConfig, constants } from "../config";
 
 const getConnection = () => {
   const url = constants.DOCKER_MODE
-  ? "mongodb://mongo:27017"
-  : "mongodb://localhost";
+    ? "mongodb://mongo:27017"
+    : "mongodb://localhost";
+
   mongoose.connect(`${url}/${dbConfig.database}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -23,4 +25,4 @@ const getConnection = () => {
   });
 };
 
-module.exports = { getConnection };
+export { getConnection };
