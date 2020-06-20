@@ -55,7 +55,7 @@ A nodejs boilerplate to help you get started quickly in building the REST APIs.
 |test/common.js|Common data used across test files|
 |test/users.js|Test cases for api /users|
 |test/products.js|Test cases for api /products|
-|test/utilities/js|Test cases for utilities functions|
+|test/utilities.js|Test cases for utilities functions|
 
 ## Prerequisites
 -   [MongoDB](https://www.mongodb.com/download-center/community)
