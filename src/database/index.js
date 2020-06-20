@@ -2,14 +2,10 @@
 
 import mongoose from "mongoose";
 import logger from "../libraries/logger";
-import { dbConfig, constants } from "../config";
+import { dbConfig } from "../config";
 
 const getConnection = () => {
-  const url = constants.DOCKER_MODE
-    ? "mongodb://mongo:27017"
-    : "mongodb://localhost";
-
-  mongoose.connect(`${url}/${dbConfig.database}`, {
+  mongoose.connect(`${dbConfig.url}/${dbConfig.database}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });

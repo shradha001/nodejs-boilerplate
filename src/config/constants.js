@@ -27,8 +27,7 @@ const constants = {
   },
   SESSION_SECRET: process.env.SESSION_SECRET
     ? process.env.SESSION_SECRET
-    : "have-it-only-in-.env",
-  DOCKER_MODE: process.env.DOCKER_MODE ? process.env.DOCKER_MODE : false
+    : "have-it-only-in-.env"
 };
 
 export default constants;

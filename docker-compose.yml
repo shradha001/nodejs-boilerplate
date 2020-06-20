@@ -8,6 +8,6 @@ services:
     ports:
       - 9596:9596
     environment:
-      - DOCKER_MODE=true
+      - MONGODB_URL=mongodb://mongo:27017
     depends_on:
       - mongo
