@@ -114,12 +114,6 @@ You can also change these configuration in `config/` directory. Checkout `.env.s
 #### To re-build
 `docker-compose build`
   
-  
-  ## Roadmap
-
- - [x] Docker
- - [ ] Image upload support in API and storage in database
-
 ##  Contributing
 
 This boilerplate is open for any suggestions and contribution which makes it better.
