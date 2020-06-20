@@ -57,7 +57,10 @@ const registerUser = async payload => {
     return createSuccessObject(
       STATUS_CODE.CREATED,
       SUCCESS_MESSAGES.ACTION_COMPLETE,
-      { token: jwtToken, expiry: constants.JWT.expiryInMins * 60 }
+      {
+        token: jwtToken,
+        expiry: constants.JWT.expiryInMins * 60
+      }
     );
   } catch (e) {
     logger.error(`Error in adding users: ${JSON.stringify(e)}`);
@@ -73,7 +76,10 @@ const loginUser = async payload => {
     return createSuccessObject(
       STATUS_CODE.OK,
       SUCCESS_MESSAGES.ACTION_COMPLETE,
-      { token: jwtToken, expiry: constants.JWT.expiryInMins * 60 }
+      {
+        token: jwtToken,
+        expiry: constants.JWT.expiryInMins * 60
+      }
     );
   } catch (e) {
     logger.error(`Error in login users: ${JSON.stringify(e)}`);

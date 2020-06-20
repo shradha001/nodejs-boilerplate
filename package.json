@@ -10,7 +10,7 @@
     "coverage": "./node_modules/.bin/nyc npm run test",
     "coveralls": "./node_modules/.bin/nyc --reporter=lcov mocha test/index.js && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "report": "./node_modules/.bin/nyc --reporter=html mocha test/index.js",
-    "prettier": "prettier --write --ignore-path .gitignore .",
+    "prettier": "pretty-quick",
     "lint:fix": "eslint --ignore-path .gitignore . --fix",
     "lint": "eslint --ignore-path .gitignore .",
     "commit": "git-cz"
@@ -99,6 +99,7 @@
     "nyc": "^14.1.1",
     "pm2": "^4.4.0",
     "prettier": "1.19.1",
+    "pretty-quick": "^2.0.1",
     "supertest": "^4.0.2"
   }
 }

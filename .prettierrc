@@ -1,0 +1,22 @@
+{
+  "tabWidth": 2,
+  "semi": true,
+  "printWidth": 80,
+  "singleQuote": false,
+  "proseWrap": "preserve",
+  "trailingComma": "none",
+  "overrides": [
+    {
+      "files": "package.json",
+      "options": {
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": ".prettierrc",
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ]
+}
