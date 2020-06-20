@@ -49,13 +49,13 @@ A nodejs boilerplate to help you get started quickly in building the REST APIs.
 |src/routes/products.js|Route for api /products|
 |src/services/users.js|Database interaction for api /users|
 |src/services/products.js|Database integration for api /products|
-|src/test/common.js|Common data used across test files|
-|src/test/users.js|Test cases for api /users|
-|src/test/products.js|Test cases for api /products|
-|src/test/utilities/js|Test cases for utilities functions|
 |src/utilties/hash.js|Methods related to hashing data and comparing hash using bcrypt|
 |src/utilities/jwt.js|Methods related to generation JWT|
 |src/utilities/util.js|Other re-usable methods|
+|test/common.js|Common data used across test files|
+|test/users.js|Test cases for api /users|
+|test/products.js|Test cases for api /products|
+|test/utilities/js|Test cases for utilities functions|
 
 ## Prerequisites
 -   [MongoDB](https://www.mongodb.com/download-center/community)
