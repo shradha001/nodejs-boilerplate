@@ -1,10 +1,8 @@
 # NodeJs Boilerplate
 
-A nodejs boilerplate to help you get started quickly in building the REST APIs.
+A ready-to-use boilerplate to help you get started quickly in building the REST APIs with Node.js, Express, and MongoDB
 
 [![Build Status](https://travis-ci.org/shradha001/nodejs-boilerplate.svg?branch=master)](https://travis-ci.org/shradha001/nodejs-boilerplate) [![Coverage Status](https://coveralls.io/repos/github/shradha001/nodejs-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/shradha001/nodejs-boilerplate?branch=master) ![enter image description here](https://david-dm.org/shradha001/nodejs-boilerplate.svg)
-
-[![asciicast](https://asciinema.org/a/XdlJ93Y92xDm1anhaDBp5y1yQ.svg)](https://asciinema.org/a/XdlJ93Y92xDm1anhaDBp5y1yQ?ahttps://david-dm.org/shradha001/nodejs-boilerplate.svg?autoplay=1)
 
 ## Features
 
@@ -23,6 +21,7 @@ A nodejs boilerplate to help you get started quickly in building the REST APIs.
 - **Build** and **lint commit messages** using commitizen and commitlint
 - **MongoDB database** integration
 - **Git hooks** to check for lint before commit and test cases before a git push
+- Postman collection with environment file
 
 ## Project Structure
 
@@ -119,34 +118,10 @@ A nodejs boilerplate to help you get started quickly in building the REST APIs.
 
 `docker-compose build`
 
-## Contributing
+## Contributions
 
-This boilerplate is open for any suggestions and contribution which makes it better.
-
-## Authors
-
-This boilerplate is developed by Shradha Mallik.
+This boilerplate is open for any suggestions and contributions which makes it better. Pull Requests are welcome.
 
 ## License
 
-MIT License
-
-Copyright (c) 2019 Shradha Mallik
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+This project is open-sourced software licensed under the MIT License. See the LICENSE file for more information.
