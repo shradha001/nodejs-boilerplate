@@ -11,7 +11,9 @@
     "format": "pretty-quick",
     "lint:fix": "eslint --ignore-path .gitignore . --fix",
     "lint": "eslint --ignore-path .gitignore .",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "coveralls": "./node_modules/.bin/nyc --reporter=lcov mocha test/index.js && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+
   },
   "husky": {
     "hooks": {
