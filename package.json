@@ -57,7 +57,7 @@
   "homepage": "https://github.com/shradha001/nodejs-boilerplate#readme",
   "dependencies": {
     "app-root-path": "^3.0.0",
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^5.0.0",
     "bluebird": "^3.7.2",
     "celebrate": "^10.0.1",
     "cors": "^2.8.5",
